@@ -1,4 +1,10 @@
 {
-  "day": 0,
-  "history": []
+  "day": 1,
+  "history": [
+    {
+      "day": 1,
+      "topic": "What is Kubernetes?",
+      "youtube": "https://youtube.com/shorts/hBFRCY036Cg"
+    }
+  ]
 }
