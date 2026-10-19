@@ -1,0 +1,60 @@
+What is Kubernetes?
+What is a Container?
+Docker vs Kubernetes
+What is a Pod?
+What is a Node?
+What is a Cluster?
+Control Plane vs Worker Node
+What is kube-apiserver?
+What is etcd?
+What is the Scheduler?
+What is kubelet?
+What is kube-proxy?
+What is a ReplicaSet?
+What is a Deployment?
+Rolling Updates
+Rollback a Deployment
+What is a Service?
+ClusterIP Service
+NodePort Service
+LoadBalancer Service
+What is Ingress?
+What is a Namespace?
+What are Labels and Selectors?
+What is a ConfigMap?
+What is a Secret?
+What is a Volume?
+PersistentVolume vs PersistentVolumeClaim
+What is a StorageClass?
+What is a StatefulSet?
+What is a DaemonSet?
+What is a Job?
+What is a CronJob?
+Resource Requests and Limits
+What is a Liveness Probe?
+What is a Readiness Probe?
+What is a Startup Probe?
+Horizontal Pod Autoscaler
+Vertical Pod Autoscaler
+Cluster Autoscaler
+What is kubectl?
+kubectl get vs describe
+kubectl logs and exec
+What is a kubeconfig file?
+What is RBAC?
+What is a ServiceAccount?
+What is a NetworkPolicy?
+What is CoreDNS?
+What is a Sidecar Container?
+What is an Init Container?
+Taints and Tolerations
+Node Affinity
+Pod Disruption Budget
+What is Helm?
+What is a Helm Chart?
+What is Amazon EKS?
+What is a CRD?
+What is an Operator?
+CrashLoopBackOff explained
+ImagePullBackOff explained
+Pending Pod troubleshooting
