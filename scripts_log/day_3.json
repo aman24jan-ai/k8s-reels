@@ -1,0 +1,20 @@
+{
+  "hook": "Docker versus Kubernetes",
+  "title": "Container Orchestration",
+  "points": [
+    "Docker runs single containers",
+    "Kubernetes manages many containers",
+    "K8s automates scaling and healing"
+  ],
+  "command": "kubectl get pods",
+  "voiceover": "Docker runs a single container on your laptop. Kubernetes takes over when you need to manage thousands of containers across many servers, automating scaling, networking, and healing so your apps never go down.",
+  "caption": "Learn the difference between running a container and orchestrating a cluster.",
+  "hashtags": [
+    "#kubernetes",
+    "#docker",
+    "#devops",
+    "#cloudnative",
+    "#programming"
+  ],
+  "topic": "Docker vs Kubernetes"
+}

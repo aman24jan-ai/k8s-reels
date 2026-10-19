@@ -1,5 +1,5 @@
 {
-  "day": 2,
+  "day": 3,
   "history": [
     {
       "day": 1,
@@ -10,6 +10,11 @@
       "day": 2,
       "topic": "What is a Container?",
       "youtube": "https://youtube.com/shorts/DlRxFU_oUCM"
+    },
+    {
+      "day": 3,
+      "topic": "Docker vs Kubernetes",
+      "youtube": "https://youtube.com/shorts/ucQmMJL55t0"
     }
   ]
 }
