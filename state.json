@@ -1,10 +1,15 @@
 {
-  "day": 1,
+  "day": 2,
   "history": [
     {
       "day": 1,
       "topic": "What is Kubernetes?",
       "youtube": "https://youtube.com/shorts/hBFRCY036Cg"
+    },
+    {
+      "day": 2,
+      "topic": "What is a Container?",
+      "youtube": "https://youtube.com/shorts/DlRxFU_oUCM"
     }
   ]
 }

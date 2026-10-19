@@ -1,0 +1,20 @@
+{
+  "hook": "What is a container anyway?",
+  "title": "Containers Explained Simply",
+  "points": [
+    "Packages code with dependencies.",
+    "Runs consistently across environments.",
+    "Isolated lightweight process on host."
+  ],
+  "command": "kubectl run demo --image=nginx",
+  "voiceover": "A container packages your application code together with all its required dependencies. Because it shares the host operating system kernel, it starts fast, uses few resources, and runs identically on your laptop, test server, or cloud.",
+  "caption": "Learn what containers are and why they power modern Kubernetes cloud applications.",
+  "hashtags": [
+    "#kubernetes",
+    "#containers",
+    "#devops",
+    "#cloudnative",
+    "#docker"
+  ],
+  "topic": "What is a Container?"
+}
