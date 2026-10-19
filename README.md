@@ -80,7 +80,7 @@ If you want to re-enable it later, bring back the Instagram upload logic and the
 | `YT_PRIVACY` | `private` / `unlisted` / `public` | `private` |
 | `POST_YOUTUBE` | set `false` to turn YouTube posting off | `true` |
 | `DRY_RUN` | `true` = only make the video, don't post | `false` |
-| `GEMINI_MODEL` | Gemini model name (update here if it changes) | `gemini-2.5-flash` |
+| `GEMINI_MODEL` | Gemini model name (update here if it changes) | `gemini-2.0-flash` |
 
 ### Step 6 — Test (without posting)
 1. Repo → **Actions → Daily Kubernetes Reel → Run workflow** → tick `dry_run` → Run.

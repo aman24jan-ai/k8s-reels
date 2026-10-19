@@ -6,7 +6,7 @@ import time
 
 import requests
 
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
 LANGUAGE = os.environ.get("REEL_LANGUAGE", "english")  # english | hinglish
 
 PROMPT = """You write scripts for 15-second vertical Kubernetes explainer reels for beginners.
