@@ -1,11 +1,11 @@
 # Kubernetes in 15s — Daily Reel Bot (100% free)
 
-Every day this bot makes a 15-second vertical reel on one Kubernetes topic and posts it to YouTube Shorts and Instagram Reels automatically.
+Every day this bot makes a 15-second vertical reel on one Kubernetes topic and posts it to YouTube Shorts automatically.
 
 ```
 topics.txt ──► Gemini (script) ──► Edge TTS (voice) ──► Pillow + FFmpeg (motion graphics)
                                                                │
-                        GitHub Actions (daily, 7 PM IST) ──► YouTube Shorts + Instagram Reels
+                        GitHub Actions (daily, 7 PM IST) ──► YouTube Shorts
 ```
 
 | Part | Tool | Cost |
@@ -14,7 +14,7 @@ topics.txt ──► Gemini (script) ──► Edge TTS (voice) ──► Pillow
 | Script | Gemini API (Google AI Studio free tier) | Free |
 | Voice | Microsoft Edge TTS (`en-IN-PrabhatNeural`) | Free |
 | Video | Python Pillow + FFmpeg | Free |
-| Posting | YouTube Data API + Instagram Graph API | Free |
+| Posting | YouTube Data API | Free |
 
 ## Files
 
@@ -30,7 +30,7 @@ topics.txt ──► Gemini (script) ──► Edge TTS (voice) ──► Pillow
 
 ## Setup (about 2–3 hours, one time)
 
-### Step 1 — GitHub repo
+### Step 1 — GitHub repo. aman42january@gmail.com
 1. Create a new **private** repo on github.com, e.g. `k8s-reels`.
 2. Push this folder to it:
    ```bash
@@ -57,21 +57,18 @@ topics.txt ──► Gemini (script) ──► Edge TTS (voice) ──► Pillow
    python3 scripts/get_youtube_token.py client_secret.json
    ```
    Sign in with the Google account that owns your YouTube channel. If you see "Google hasn't verified this app", click **Advanced → Go to app**.
+   Example values will be printed like this:
+   - `YT_CLIENT_ID = your_client_id_here`
+   - `YT_CLIENT_SECRET = your_client_secret_here`
+   - `YT_REFRESH_TOKEN = your_refresh_token_here`
 6. Add the three printed values as GitHub secrets: `YT_CLIENT_ID`, `YT_CLIENT_SECRET`, `YT_REFRESH_TOKEN`.
 
 > **Note:** Until Google audits your app, videos uploaded through the API stay **private**, so `YT_PRIVACY` defaults to `private`. Request the audit with the free "YouTube API Services Audit and Quota Extension Form" in Google Cloud. Until then, you can make each Short public with one click in YouTube Studio.
 
-### Step 4 — Instagram
-1. Instagram app → Settings → **Account type → Professional (Creator or Business)**.
-2. Link that Instagram account to a **Facebook Page** (Page settings → Linked accounts).
-3. https://developers.facebook.com → **My Apps → Create App** → use case: "Other" → type: **Business**.
-4. Open **Graph API Explorer** → select your app → add these permissions:
-   `instagram_basic`, `instagram_content_publish`, `pages_show_list`, `pages_read_engagement`, `business_management` → **Generate Access Token**.
-5. In the **Access Token Debugger**, click **Extend Access Token** to get a long-lived token (60 days).
-6. In the Explorer, run: `me/accounts?fields=instagram_business_account{id,username}`. The `instagram_business_account.id` is your IG user ID.
-7. Add GitHub secrets: `IG_USER_ID`, `IG_ACCESS_TOKEN`.
+### Step 4 — Optional future expansion
+This version is configured for **YouTube only**. Instagram publishing is intentionally disabled by default.
 
-> **The token expires after 60 days.** Set a calendar reminder for day 50, repeat steps 4–5 and update the secret. (A **System User** token from Meta Business Suite never expires; you can switch to it later.)
+If you want to re-enable it later, bring back the Instagram upload logic and the `POST_INSTAGRAM` / `IG_*` variables.
 
 ### Step 5 — Variables (optional)
 **Settings → Secrets and variables → Actions → Variables** tab:
@@ -81,18 +78,17 @@ topics.txt ──► Gemini (script) ──► Edge TTS (voice) ──► Pillow
 | `CHANNEL_HANDLE` | Name shown on the video, e.g. `@amandeep.cloud` | empty |
 | `REEL_LANGUAGE` | `english` or `hinglish` | `english` |
 | `YT_PRIVACY` | `private` / `unlisted` / `public` | `private` |
-| `POST_YOUTUBE` / `POST_INSTAGRAM` | set `false` to turn a platform off | `true` |
+| `POST_YOUTUBE` | set `false` to turn YouTube posting off | `true` |
 | `DRY_RUN` | `true` = only make the video, don't post | `false` |
 | `GEMINI_MODEL` | Gemini model name (update here if it changes) | `gemini-2.5-flash` |
-| `IG_GRAPH_VERSION` | Facebook Graph API version | `v23.0` |
 
 ### Step 6 — Test (without posting)
 1. Repo → **Actions → Daily Kubernetes Reel → Run workflow** → tick `dry_run` → Run.
 2. After 3–5 minutes, open the run → download the `reel-…` zip under **Artifacts** and watch the video.
 
 ### Step 7 — Go live
-- Run the workflow once with `dry_run` unticked. The post should appear on YouTube and Instagram.
-- From then on it runs automatically every day at **13:30 UTC (7:00 PM IST / 12:30 AM Sydney)**. To change the time, edit `cron` in `.github/workflows/daily-reel.yml`.
+- Run the workflow once with `dry_run` unticked. The post should appear on YouTube.
+- From then on it runs automatically every day at **13:10 UTC (6:40 PM IST / 12:10 AM Sydney)**. To change the time, edit `cron` in `.github/workflows/daily-reel.yml`.
 
 ---
 
@@ -109,5 +105,4 @@ topics.txt ──► Gemini (script) ──► Edge TTS (voice) ──► Pillow
 |---|---|
 | `Gemini busy (429)` | Free-tier limit; the script retries 4 times automatically. If it keeps happening, change `GEMINI_MODEL`. |
 | `invalid_grant` (YouTube) | Refresh token expired. Check step 3.3 (Publish app), then repeat step 3.5. |
-| `Instagram API error … OAuthException` | IG token expired. Repeat steps 4.4–4.5. |
 | Video shows as private | Normal until the audit is approved (see Step 3 note). |

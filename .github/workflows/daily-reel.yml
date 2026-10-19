@@ -2,14 +2,19 @@ name: Daily Kubernetes Reel
 
 on:
   schedule:
-    # 13:30 UTC = 7:00 PM India time (00:30 AM Sydney). Change to suit your audience.
+    # IST schedule:
+    # 9:00 AM IST = 03:30 UTC
+    # 1:00 PM IST = 07:30 UTC
+    # 7:00 PM IST = 13:30 UTC
+    - cron: "30 03 * * *"
+    - cron: "30 07 * * *"
     - cron: "30 13 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
         description: "Only make the video, don't post"
         type: boolean
-        default: true
+        default: false
 
 permissions:
   contents: write
@@ -38,20 +43,17 @@ jobs:
 
       - name: Make and post today's reel
         env:
-          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || vars.DRY_RUN || 'false' }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
           POST_YOUTUBE: ${{ vars.POST_YOUTUBE || 'true' }}
-          POST_INSTAGRAM: ${{ vars.POST_INSTAGRAM || 'true' }}
+          POST_INSTAGRAM: ${{ vars.POST_INSTAGRAM || 'false' }}
           REEL_LANGUAGE: ${{ vars.REEL_LANGUAGE || 'english' }}
           CHANNEL_HANDLE: ${{ vars.CHANNEL_HANDLE }}
           YT_PRIVACY: ${{ vars.YT_PRIVACY || 'private' }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-2.5-flash' }}
-          IG_GRAPH_VERSION: ${{ vars.IG_GRAPH_VERSION || 'v23.0' }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
-          IG_USER_ID: ${{ secrets.IG_USER_ID }}
-          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
         run: python src/main.py
 
       - name: Keep the video for 14 days
