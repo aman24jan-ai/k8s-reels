@@ -49,7 +49,7 @@ jobs:
           REEL_LANGUAGE: ${{ vars.REEL_LANGUAGE || 'english' }}
           CHANNEL_HANDLE: ${{ vars.CHANNEL_HANDLE }}
           YT_PRIVACY: ${{ vars.YT_PRIVACY || 'private' }}
-          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-2.0-flash' }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-flash-latest' }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}

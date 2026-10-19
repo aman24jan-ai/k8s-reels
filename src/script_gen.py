@@ -6,7 +6,9 @@ import time
 
 import requests
 
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL") or "gemini-flash-latest"
+FALLBACK_MODELS = ["gemini-flash-latest", "gemini-3.8-flash", "gemini-3.6-flash",
+                   "gemini-3.5-flash-lite", "gemini-3.1-flash-lite"]
 LANGUAGE = os.environ.get("REEL_LANGUAGE", "english")  # english | hinglish
 
 PROMPT = """You write scripts for 15-second vertical Kubernetes explainer reels for beginners.
@@ -54,25 +56,36 @@ def _validate(d: dict) -> dict:
 def generate(topic: str) -> dict:
     """Return a script dict for the topic. Retries a few times on bad JSON or rate limits."""
     key = os.environ["GEMINI_API_KEY"]
-    url = (f"https://generativelanguage.googleapis.com/v1beta/models/"
-           f"{GEMINI_MODEL}:generateContent")
     body = {
         "contents": [{"parts": [{"text": PROMPT.format(
             topic=topic, lang_rule=LANG_RULES.get(LANGUAGE, LANG_RULES["english"]))}]}],
         "generationConfig": {"temperature": 0.4, "responseMimeType": "application/json"},
     }
+    # Google retires model names often; if one 404s, fall back to the next.
+    models = [GEMINI_MODEL] + [m for m in FALLBACK_MODELS if m != GEMINI_MODEL]
     last_err = None
-    for attempt in range(4):
-        try:
-            r = requests.post(url, params={"key": key}, json=body, timeout=60)
-            if r.status_code in (429, 500, 503):
-                raise RuntimeError(f"Gemini busy ({r.status_code})")
-            r.raise_for_status()
-            text = r.json()["candidates"][0]["content"]["parts"][0]["text"]
-            return _validate(_extract_json(text))
-        except Exception as e:  # noqa: BLE001
-            last_err = e
-            time.sleep(10 * (attempt + 1))
+    for model in models:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+        for attempt in range(4):
+            try:
+                r = requests.post(url, params={"key": key}, json=body, timeout=60)
+                if r.status_code == 404:
+                    last_err = RuntimeError(f"model '{model}' not available (404)")
+                    print(f"Gemini model '{model}' not available, trying next")
+                    break  # try the next model
+                if r.status_code in (429, 500, 503):
+                    raise RuntimeError(f"Gemini busy ({r.status_code}) on {model}")
+                if r.status_code >= 400:
+                    # 400/403 usually means a bad or restricted API key: don't hammer it
+                    raise PermissionError(f"Gemini error {r.status_code}: {r.text[:300]}")
+                text = r.json()["candidates"][0]["content"]["parts"][0]["text"]
+                print(f"Script written with {model}")
+                return _validate(_extract_json(text))
+            except PermissionError:
+                raise
+            except Exception as e:  # noqa: BLE001
+                last_err = e
+                time.sleep(10 * (attempt + 1))
     raise RuntimeError(f"Script generation failed for '{topic}': {last_err}")
 
 
