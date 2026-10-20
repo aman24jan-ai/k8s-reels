@@ -1,4 +1,4 @@
-"""Daily pipeline: topic -> script -> voice -> reel -> YouTube Shorts + Instagram Reels."""
+"""Daily pipeline: topic -> script -> voice -> reel -> YouTube Shorts."""
 import json
 import os
 import sys
@@ -72,7 +72,7 @@ def main() -> None:
             title = f"{script['title']} | Kubernetes in 15s #Shorts"
             result["youtube"] = yt(video, title, caption, tags)
             print("YouTube:", result["youtube"])
-        if flag("POST_INSTAGRAM", "true"):
+        if flag("POST_INSTAGRAM", "false"):
             from upload_instagram import upload as ig
             result["instagram"] = ig(video, caption)
             print("Instagram media id:", result["instagram"])
