@@ -1,0 +1,20 @@
+{
+  "hook": "Kubernetes doesn't run containers directly.",
+  "title": "What Is A Pod?",
+  "points": [
+    "Smallest deployable Kubernetes unit",
+    "Wraps one or more containers",
+    "Shares storage and network resources"
+  ],
+  "command": "kubectl get pods",
+  "voiceover": "In Kubernetes, a pod is the smallest deployable computing unit. It wraps one or more containers that share the exact same storage and network IP address. When you deploy an app, you are always running pods.",
+  "caption": "Learn what a Pod is in Kubernetes in under fifteen seconds.",
+  "hashtags": [
+    "#kubernetes",
+    "#k8s",
+    "#devops",
+    "#cloudnative",
+    "#containers"
+  ],
+  "topic": "What is a Pod?"
+}
