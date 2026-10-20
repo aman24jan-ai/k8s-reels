@@ -1,5 +1,5 @@
 {
-  "day": 8,
+  "day": 9,
   "history": [
     {
       "day": 1,
@@ -41,6 +41,12 @@
       "topic": "What is kube-apiserver?",
       "style": "whiteboard",
       "youtube": "https://youtube.com/shorts/jsyX2WFhqm4"
+    },
+    {
+      "day": 9,
+      "topic": "What is etcd?",
+      "style": "whiteboard",
+      "youtube": "https://youtube.com/shorts/_jaJFFKj92Y"
     }
   ]
 }

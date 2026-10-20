@@ -1,0 +1,101 @@
+{
+  "topic": "What is etcd?",
+  "title": "If this single database crashes, your Kubernetes cluster dies",
+  "caption": "etcd holds the state of your entire Kubernetes cluster. Have you ever restored an etcd snapshot?",
+  "hashtags": [
+    "#kubernetes",
+    "#k8s",
+    "#devops",
+    "#etcd",
+    "#cloud"
+  ],
+  "keywords": [
+    "etcd",
+    "kubernetes",
+    "database"
+  ],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "Your entire Kubernetes cluster relies on one single brain that remembers everything. Meet etcd, the key value database holding cluster state.",
+      "heading": "ETCD",
+      "card": "KEY VALUE",
+      "card_cue": "key",
+      "card_label": "database",
+      "point_cue": "remembers",
+      "wrap_label": "CONTROL PLANE",
+      "wrap_cue": "cluster",
+      "card2": "STATE",
+      "card2_cue": "state",
+      "group_label": "single source of truth",
+      "tagline": "THE CLUSTER BRAIN",
+      "tagline_cue": "brain"
+    },
+    {
+      "type": "analogy",
+      "vo": "Think of etcd like a safe company vault storing every single truth. If it dies, the whole management team loses memory.",
+      "heading": "THE BRAIN",
+      "cards": [
+        "SECRETARY",
+        "VAULT"
+      ],
+      "line": "Like a company vault storing all truth",
+      "cue": "vault"
+    },
+    {
+      "type": "flow",
+      "vo": "When you apply a file, only the API server writes that change to etcd. Nothing else touches it directly.",
+      "heading": "HOW IT SAVES STATE",
+      "steps": [
+        {
+          "label": "KUBECTL APPLY",
+          "cue": "apply"
+        },
+        {
+          "label": "API SERVER",
+          "cue": "api"
+        },
+        {
+          "label": "WRITE TO ETCD",
+          "cue": "writes"
+        }
+      ],
+      "note": "ONLY API SERVER TALKS TO ETCD",
+      "note_cue": "only"
+    },
+    {
+      "type": "trick",
+      "vo": "Never back up etcd by hand. Use etcdctl to save a consistent snapshot file that can restore your saved cluster.",
+      "heading": "THE TRICK",
+      "strike": "copying files by hand",
+      "strike_cue": "hand",
+      "terminal": [
+        "etcdctl snapshot save backup.db"
+      ],
+      "terminal_cue": "snapshot",
+      "result_count": 1,
+      "result_cue": "saved",
+      "status": "SNAPSHOT CREATED"
+    },
+    {
+      "type": "recap",
+      "vo": "So etcd is the key value store, your single source of truth. Always take snapshots! Follow for more Kubernetes tips.",
+      "heading": "ETCD",
+      "pills": [
+        {
+          "text": "KEY VALUE STORE",
+          "cue": "store"
+        },
+        {
+          "text": "SINGLE TRUTH",
+          "cue": "truth"
+        },
+        {
+          "text": "BACKUP SNAPSHOTS",
+          "cue": "snapshots"
+        }
+      ],
+      "follow_cue": "follow"
+    }
+  ]
+}
