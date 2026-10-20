@@ -1,0 +1,62 @@
+{
+  "topic": "What is a Service?",
+  "title": "Your Pods keep changing IPs. So how do users find them?",
+  "caption": "Kubernetes Services in plain English. ClusterIP, NodePort or LoadBalancer: which do you use most?",
+  "hashtags": ["#kubernetes", "#k8s", "#devops", "#networking", "#cloud"],
+  "keywords": ["service", "pods", "labels"],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "Your Pods keep dying and coming back with new IP addresses. So how does anyone find them? With a Service.",
+      "heading": "SERVICES",
+      "card": "YOUR PODS", "card_cue": "pods", "card_label": "new IP every restart",
+      "point_cue": "find",
+      "wrap_label": "SERVICE", "wrap_cue": "service"
+    },
+    {
+      "type": "analogy",
+      "vo": "Think of a Service like a restaurant's phone number. The chefs change every shift, but the number stays the same.",
+      "heading": "THINK OF IT LIKE",
+      "cards": ["PHONE NO.", "CHEFS"],
+      "line": "a restaurant phone number", "cue": "phone"
+    },
+    {
+      "type": "flow",
+      "vo": "A user calls the Service name. The Service picks a healthy Pod using labels, and forwards the request.",
+      "heading": "HOW IT ROUTES",
+      "steps": [
+        {"label": "USER", "cue": "user"},
+        {"label": "SERVICE", "cue": "name", "side": "stable IP"},
+        {"label": "POD", "cue": "healthy", "side": "app=web"}
+      ],
+      "note": "pods are matched by labels", "note_cue": "labels"
+    },
+    {
+      "type": "node_rows",
+      "vo": "If a Pod crashes, the Service simply stops sending it traffic, and sends requests to the other ready Pods.",
+      "heading": "POD DOWN? NO PROBLEM",
+      "box_label": "app=web", "rows": 3, "row_status": "READY",
+      "fail_row": 0, "fail_cue": "crashes", "fail_status": "REMOVED",
+      "note": "traffic goes to ready pods", "note_cue": "ready"
+    },
+    {
+      "type": "trick",
+      "vo": "Create one in a single line. Expose your Deployment, and Kubernetes gives it a stable name and IP.",
+      "heading": "THE TRICK?",
+      "terminal": ["kubectl expose deployment web", "--port=80 --target-port=8080"],
+      "terminal_cue": "expose",
+      "status": "service/web exposed"
+    },
+    {
+      "type": "recap",
+      "vo": "Services: a stable address, load balancing, and automatic failover. Follow for more Kubernetes in plain English.",
+      "heading": "SERVICES",
+      "pills": [
+        {"text": "STABLE ADDRESS", "cue": "address"},
+        {"text": "LOAD BALANCING", "cue": "balancing"},
+        {"text": "AUTO FAILOVER", "cue": "failover"}
+      ],
+      "follow_cue": "follow"
+    }
+  ]
+}

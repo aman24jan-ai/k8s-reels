@@ -1,0 +1,56 @@
+{
+  "topic": "Rolling Updates",
+  "title": "You ship a new version and users never notice. Here's how",
+  "caption": "Rolling updates in plain English. Have you ever had to roll back in production?",
+  "hashtags": ["#kubernetes", "#k8s", "#devops", "#deployment", "#cicd"],
+  "keywords": ["rolling", "readiness", "rollback"],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "You push a new version of your app. Your users never notice. That's a rolling update.",
+      "heading": "ROLLING UPDATES",
+      "card": "APP v1", "card_cue": "app", "card_label": "version 1 running",
+      "point_cue": "push",
+      "card2": "APP v2", "card2_cue": "users", "group_label": "old and new, side by side",
+      "tagline": "ZERO DOWNTIME", "tagline_cue": "notice"
+    },
+    {
+      "type": "node_rows",
+      "vo": "Kubernetes swaps Pods a few at a time. Old v1 Pods are replaced by new v2 Pods, only once the new ones are ready.",
+      "heading": "A FEW AT A TIME",
+      "box_label": "DEPLOYMENT", "rows": 3, "row_status": "v1",
+      "fail_row": 0, "fail_cue": "replaced", "fail_status": "STOPPING",
+      "replace_cue": "ready", "replace_status": "v2 READY",
+      "note": "the rest keep serving users", "note_cue": "ones"
+    },
+    {
+      "type": "flow",
+      "vo": "Traffic only goes to Pods that pass their readiness check. So users always hit a working version.",
+      "heading": "WHO GETS TRAFFIC?",
+      "steps": [
+        {"label": "TRAFFIC", "cue": "traffic"},
+        {"label": "READINESS CHECK", "cue": "readiness"},
+        {"label": "v2 POD", "cue": "working", "side": "ready"}
+      ]
+    },
+    {
+      "type": "trick",
+      "vo": "Something broke? Don't panic. One command takes you straight back to the previous version.",
+      "heading": "THE TRICK?",
+      "strike": "panic and redeploy", "strike_cue": "panic",
+      "terminal": ["kubectl rollout undo deploy/web"], "terminal_cue": "command",
+      "status": "deployment.apps/web rolled back"
+    },
+    {
+      "type": "recap",
+      "vo": "Rolling updates: zero downtime, health checked, and one command to undo. Follow for more Kubernetes in plain English.",
+      "heading": "ROLLING UPDATES",
+      "pills": [
+        {"text": "ZERO DOWNTIME", "cue": "downtime"},
+        {"text": "HEALTH CHECKED", "cue": "checked"},
+        {"text": "EASY ROLLBACK", "cue": "undo"}
+      ],
+      "follow_cue": "follow"
+    }
+  ]
+}

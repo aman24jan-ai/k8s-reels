@@ -256,7 +256,10 @@ class AppCard(El):
         k = 0 if self.crash_t is None else clamp((t - self.crash_t) / 0.3)
         rounded(d, box, 16, fill=fade(mixc((18, 40, 44), RED_FILL, k), a),
                 outline=fade(mixc(TEAL_LINE, RED_LINE, k), a), width=3)
-        d.text((cx, box[1] + h * 0.28), self.title, font=font(MARKER, 40 * s),
+        size = 40
+        while size > 18 and font(MARKER, size).getlength(self.title) > self.w - 28:
+            size -= 2
+        d.text((cx, box[1] + h * 0.28), self.title, font=font(MARKER, size * s),
                fill=fade(mixc(TEAL, RED, k), a), anchor="mm")
         for i, frac in enumerate((0.7, 0.55, 0.62)):
             ly = box[1] + h * (0.5 + i * 0.14)
@@ -321,6 +324,8 @@ class Terminal(El):
 
     def __init__(self, t0, x, y, w, lines, t1=None, type_speed=14, size=46):
         super().__init__(t0, t1, "pop")
+        longest = max((len(l) for l in lines), default=1)
+        size = min(size, int((w - 90) / (0.61 * longest)))  # shrink long commands to fit
         self.x, self.y, self.w, self.lines, self.speed, self.size = x, y, w, lines, type_speed, size
         self.h = 110 + len(lines) * size * 1.35
 
@@ -456,7 +461,10 @@ class Pill(El):
         w, h = self.w * s, 84 * s
         rounded(d, (self.x - w / 2, y - h / 2, self.x + w / 2, y + h / 2), h / 2,
                 outline=fade(self.color, a), width=3)
-        d.text((self.x, y), self.text, font=font(MARKER, 40 * s), fill=fade(self.color, a),
+        size = 40
+        while size > 22 and font(MARKER, size).getlength(self.text) > self.w - 60:
+            size -= 2
+        d.text((self.x, y), self.text, font=font(MARKER, size * s), fill=fade(self.color, a),
                anchor="mm")
 
 

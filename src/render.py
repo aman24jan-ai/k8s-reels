@@ -12,7 +12,6 @@ import os
 import random
 import re
 import subprocess
-from typing import Optional
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
@@ -40,24 +39,7 @@ POINT_LEN = 2.0
 
 
 def font(name: str, size: int) -> ImageFont.FreeTypeFont:
-    candidates = []
-    if name:
-        candidates.append(os.path.basename(name))
-    candidates.extend([
-        "GochiHand-Regular.ttf",
-        "PermanentMarker-Regular.ttf",
-        "DejaVuSans.ttf",
-        "DejaVuSans-Bold.ttf",
-    ])
-    seen = set()
-    for candidate in candidates:
-        if not candidate or candidate in seen:
-            continue
-        seen.add(candidate)
-        path = os.path.join(FONTS, candidate)
-        if os.path.exists(path):
-            return ImageFont.truetype(path, size)
-    return ImageFont.load_default()
+    return ImageFont.truetype(os.path.join(FONTS, name), size)
 
 
 def clamp(t):
@@ -212,7 +194,7 @@ def chunk_words(words: list[dict], max_words=3, max_chars=18) -> list[list[dict]
 
 
 class Reel:
-    def __init__(self, script: dict, day: int, handle: str, words: Optional[list[dict]],
+    def __init__(self, script: dict, day: int, handle: str, words: list[dict] | None,
                  voice_seconds: float = 12.0):
         self.s, self.day, self.handle = script, day, handle
         self.bg = build_background()
@@ -479,8 +461,8 @@ class Reel:
         return fr
 
 
-def render(script: dict, audio_path: Optional[str], out_path: str, day: int = 1,
-           handle: str = "", words: Optional[list[dict]] = None,
+def render(script: dict, audio_path: str | None, out_path: str, day: int = 1,
+           handle: str = "", words: list[dict] | None = None,
            voice_seconds: float = 12.0) -> str:
     from audio import mix
 

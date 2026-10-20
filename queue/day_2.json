@@ -1,16 +1,61 @@
 {
-  "hook": "Your app works on your laptop only?",
-  "title": "What is a Container?",
-  "analogy": "A shipping box with your app and everything it needs",
-  "points": [
-    "Packs code, libraries and config",
-    "Runs the same on any machine",
-    "Starts in seconds, not minutes"
-  ],
-  "command": "docker run -d -p 8080:80 nginx",
-  "question": "Docker or Podman: which do you use?",
-  "keywords": ["container", "laptop", "same"],
-  "voiceover": "Your app works on your laptop, but breaks on the server? A container fixes that. Think of it as a shipping box. It packs your code, libraries and config, runs the same everywhere, and starts in seconds.",
-  "caption": "Containers explained in 15 seconds. Docker or Podman: which do you use?",
-  "hashtags": ["#docker", "#containers", "#kubernetes", "#devops", "#cloud"]
+  "topic": "What is a Container?",
+  "title": "Works on your laptop, breaks on the server? Watch this",
+  "caption": "Containers in plain English. Docker or Podman: which do you use?",
+  "hashtags": ["#docker", "#containers", "#kubernetes", "#devops", "#cloud"],
+  "keywords": ["container", "image", "kernel"],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "Your app works on your laptop, but breaks on the server. Sound familiar? Containers fix exactly that.",
+      "heading": "CONTAINERS",
+      "card": "YOUR APP", "card_cue": "app", "card_label": "works on my laptop",
+      "point_cue": "breaks",
+      "wrap_label": "CONTAINER", "wrap_cue": "containers",
+      "tagline": "SAME APP. EVERYWHERE.", "tagline_cue": "fix"
+    },
+    {
+      "type": "analogy",
+      "vo": "Think of a shipping container. Whatever is inside, every ship, truck and crane handles it the same way.",
+      "heading": "THINK OF IT LIKE",
+      "cards": ["SHIP", "TRUCK"],
+      "line": "a shipping container for code", "cue": "same"
+    },
+    {
+      "type": "inside_box",
+      "vo": "A container packs your code, libraries and settings into one image, and shares the host's kernel, so it starts in seconds.",
+      "heading": "INSIDE A CONTAINER",
+      "cards": ["CODE", "LIBRARIES", "CONFIG"],
+      "badge": "IMAGE web:1.0", "badge_cue": "image",
+      "shared": "SHARED HOST KERNEL", "shared_cue": "kernel",
+      "note": "starts in seconds", "note_cue": "seconds"
+    },
+    {
+      "type": "node_rows",
+      "vo": "One server can run many containers side by side. If one crashes, the others keep running untouched.",
+      "heading": "ISOLATED",
+      "box_label": "SERVER", "rows": 3, "row_status": "RUNNING",
+      "fail_row": 2, "fail_cue": "crashes", "fail_status": "CRASHED",
+      "note": "the others keep running", "note_cue": "others"
+    },
+    {
+      "type": "trick",
+      "vo": "Try it now. One command downloads nginx and runs it in a container, ready in seconds.",
+      "heading": "TRY IT",
+      "terminal": ["docker run -d -p 8080:80 nginx"], "terminal_cue": "command",
+      "result_count": 1, "result_cue": "runs",
+      "status": "nginx on localhost:8080"
+    },
+    {
+      "type": "recap",
+      "vo": "Containers: portable, lightweight, and isolated. And Kubernetes is how you run thousands of them. Follow for more.",
+      "heading": "CONTAINERS",
+      "pills": [
+        {"text": "PORTABLE", "cue": "portable"},
+        {"text": "LIGHTWEIGHT", "cue": "lightweight"},
+        {"text": "ISOLATED", "cue": "isolated"}
+      ],
+      "follow_cue": "follow"
+    }
+  ]
 }

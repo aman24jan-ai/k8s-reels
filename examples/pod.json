@@ -1,0 +1,58 @@
+{
+  "topic": "What is a Pod?",
+  "title": "Kubernetes never runs your container. Here's why",
+  "caption": "Pods explained in plain English. What runs in your Pods besides your app?",
+  "hashtags": ["#kubernetes", "#k8s", "#devops", "#cloud", "#containers"],
+  "keywords": ["pod", "container", "deployment"],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "Kubernetes never runs your container directly. It wraps it in a Pod, the smallest thing it can deploy. One or more containers, packed together.",
+      "heading": "PODS",
+      "card": "YOUR APP", "card_cue": "container", "card_label": "container",
+      "point_cue": "wraps",
+      "wrap_label": "POD", "wrap_cue": "pod",
+      "card2": "LOGGER", "card2_cue": "more", "group_label": "one or more containers",
+      "tagline": "SMALLEST THING YOU CAN DEPLOY", "tagline_cue": "smallest"
+    },
+    {
+      "type": "inside_box",
+      "vo": "Containers in the same Pod share one IP address and storage. So they talk over localhost, like roommates sharing one flat.",
+      "heading": "INSIDE A POD",
+      "cards": ["APP", "LOGGER"],
+      "badge": "IP 10.1.0.7", "badge_cue": "ip",
+      "link_label": "localhost", "link_cue": "localhost",
+      "shared": "SHARED VOLUME", "shared_cue": "storage",
+      "note": "like roommates sharing one flat", "note_cue": "roommates"
+    },
+    {
+      "type": "node_rows",
+      "vo": "But Pods are temporary. When one crashes, Kubernetes doesn't repair it. It throws it away and starts a new Pod, with a new IP.",
+      "heading": "PODS ARE TEMPORARY", "heading_cue": "temporary",
+      "box_label": "NODE", "rows": 3, "row_status": "RUNNING",
+      "fail_row": 1, "fail_cue": "crashes", "fail_status": "CRASHED",
+      "replace_cue": "new", "replace_status": "NEW POD",
+      "note": "IP 10.1.0.7 -> 10.1.0.9", "note_cue": "ip"
+    },
+    {
+      "type": "trick",
+      "vo": "That's why you rarely create Pods yourself. You write a Deployment, and say how many you want.",
+      "heading": "THE TRICK?",
+      "strike": "create pods by hand", "strike_cue": "yourself",
+      "terminal": ["kind: Deployment", "replicas: 3"], "terminal_cue": "deployment",
+      "result_count": 3, "result_cue": "many",
+      "status": "3 / 3 running"
+    },
+    {
+      "type": "recap",
+      "vo": "So, Pods: the smallest unit, a shared network, and fully disposable. Follow for more Kubernetes in plain English.",
+      "heading": "PODS",
+      "pills": [
+        {"text": "SMALLEST UNIT", "cue": "smallest"},
+        {"text": "SHARED NETWORK", "cue": "network"},
+        {"text": "DISPOSABLE", "cue": "disposable"}
+      ],
+      "follow_cue": "follow"
+    }
+  ]
+}
