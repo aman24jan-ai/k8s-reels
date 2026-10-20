@@ -6,6 +6,7 @@ One is picked per day. If the folder is empty, a soft lo-fi beat is generated in
 import glob
 import os
 import subprocess
+from typing import Optional
 
 import numpy as np
 
@@ -142,7 +143,7 @@ def sfx(kind: str) -> np.ndarray:
     raise ValueError(kind)
 
 
-def mix(voice_path: str | None, events: list[tuple[float, str]], out_wav: str,
+def mix(voice_path: Optional[str], events: list[tuple[float, str]], out_wav: str,
         seconds: float, day: int = 0, voice_delay: float = 0.35) -> str:
     n = int(seconds * SR)
     track = np.zeros(n, dtype=np.float32)
