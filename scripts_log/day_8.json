@@ -1,0 +1,103 @@
+{
+  "topic": "What is kube-apiserver?",
+  "title": "Nobody talks to Kubernetes directly. Meet the gatekeeper",
+  "caption": "The kube-apiserver is the unsung brain of your cluster. Have you ever checked its logs?",
+  "hashtags": [
+    "#kubernetes",
+    "#k8s",
+    "#devops",
+    "#cloudnative",
+    "#sysadmin"
+  ],
+  "keywords": [
+    "kube-apiserver",
+    "control plane",
+    "kubectl"
+  ],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "Nobody touches your cluster directly. Every single command must pass through one gatekeeper: the kube-apiserver.",
+      "heading": "API SERVER",
+      "card": "KUBECTL",
+      "card_cue": "command",
+      "card_label": "client",
+      "point_cue": "touches",
+      "wrap_label": "API SERVER",
+      "wrap_cue": "gatekeeper",
+      "card2": "WORKER NODE",
+      "card2_cue": "single",
+      "group_label": "EVERY REQUEST",
+      "tagline": "THE ONLY FRONT DOOR",
+      "tagline_cue": "directly"
+    },
+    {
+      "type": "analogy",
+      "vo": "Think of it like a strict bouncer. It authenticates who you are and decides if you are allowed inside.",
+      "heading": "THE BOUNCER",
+      "cards": [
+        "CLIENT",
+        "ETCD"
+      ],
+      "line": "STRICT BOUNCER CHECKING EVERY REQUEST",
+      "cue": "bouncer"
+    },
+    {
+      "type": "flow",
+      "vo": "When you apply a pod, it validates your token, checks policy, and writes into etcd. It is the only component allowed to talk to the database.",
+      "heading": "REQUEST PIPELINE",
+      "steps": [
+        {
+          "label": "AUTHENTICATE",
+          "cue": "validates"
+        },
+        {
+          "label": "AUTHORIZE",
+          "cue": "policy"
+        },
+        {
+          "label": "PERSIST",
+          "cue": "database",
+          "side": "WRITES ETCD"
+        }
+      ],
+      "note": "ONLY ETCD CLIENT",
+      "note_cue": "component"
+    },
+    {
+      "type": "trick",
+      "vo": "Forget the idea that Kubernetes is a magic black box. You can see the apiserver running as a static pod inside kube-system.",
+      "heading": "SEE IT RUNNING",
+      "strike": "magic black box",
+      "strike_cue": "magic",
+      "terminal": [
+        "kubectl get pods -n kube-system",
+        "-l component=kube-apiserver"
+      ],
+      "terminal_cue": "static",
+      "result_count": 1,
+      "result_cue": "running",
+      "status": "1/1 RUNNING"
+    },
+    {
+      "type": "recap",
+      "vo": "Remember: it is your front door, authenticates everything, and solely guards the database. Follow for more Kubernetes made simple!",
+      "heading": "API SERVER",
+      "pills": [
+        {
+          "text": "ONLY FRONT DOOR",
+          "cue": "door"
+        },
+        {
+          "text": "AUTHENTICATES ALL",
+          "cue": "authenticates"
+        },
+        {
+          "text": "GUARDS THE DATABASE",
+          "cue": "database"
+        }
+      ],
+      "follow_cue": "follow"
+    }
+  ]
+}

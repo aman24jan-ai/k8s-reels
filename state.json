@@ -1,5 +1,5 @@
 {
-  "day": 7,
+  "day": 8,
   "history": [
     {
       "day": 1,
@@ -35,6 +35,12 @@
       "day": 7,
       "topic": "Control Plane vs Worker Node",
       "youtube": "https://youtube.com/shorts/OEzsmo_5dgM"
+    },
+    {
+      "day": 8,
+      "topic": "What is kube-apiserver?",
+      "style": "whiteboard",
+      "youtube": "https://youtube.com/shorts/jsyX2WFhqm4"
     }
   ]
 }
