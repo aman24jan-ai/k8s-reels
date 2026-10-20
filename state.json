@@ -1,5 +1,5 @@
 {
-  "day": 4,
+  "day": 5,
   "history": [
     {
       "day": 1,
@@ -20,6 +20,11 @@
       "day": 4,
       "topic": "What is a Pod?",
       "youtube": "https://youtube.com/shorts/UCZAmWUh62A"
+    },
+    {
+      "day": 5,
+      "topic": "What is a Node?",
+      "youtube": "https://youtube.com/shorts/fEsL2yE0igs"
     }
   ]
 }

@@ -1,0 +1,20 @@
+{
+  "hook": "Containers don't run on air.",
+  "title": "Kubernetes Nodes Explained",
+  "points": [
+    "Actual worker machines",
+    "Hosts your pods",
+    "Auto-heals on failure"
+  ],
+  "command": "kubectl get nodes",
+  "voiceover": "Containers do not run on air. They live on nodes, which are actual virtual or physical worker machines. If a node crashes, Kubernetes moves your pods to another healthy machine instantly.",
+  "caption": "Nodes are the worker machines powering your apps. Always monitor their status with kubectl.",
+  "hashtags": [
+    "#kubernetes",
+    "#devops",
+    "#cloudnative",
+    "#k8s",
+    "#infrastructure"
+  ],
+  "topic": "What is a Node?"
+}
