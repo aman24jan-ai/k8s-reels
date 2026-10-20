@@ -1,0 +1,20 @@
+{
+  "hook": "Your single server will crash.",
+  "title": "What's a Cluster?",
+  "points": [
+    "Pooled compute machines",
+    "One unified brain",
+    "Automatic failure recovery"
+  ],
+  "command": "kubectl get nodes",
+  "voiceover": "One server fails, your app dies. A Kubernetes cluster unites multiple servers into one brain. If one node crashes, your containers instantly reschedule to healthy nodes without downtime. You manage one unified system.",
+  "caption": "Stop managing isolated servers; view your cluster's pooled nodes with kubectl get nodes.",
+  "hashtags": [
+    "#kubernetes",
+    "#k8s",
+    "#devops",
+    "#cloudnative",
+    "#sysadmin"
+  ],
+  "topic": "What is a Cluster?"
+}

@@ -1,5 +1,5 @@
 {
-  "day": 5,
+  "day": 6,
   "history": [
     {
       "day": 1,
@@ -25,6 +25,11 @@
       "day": 5,
       "topic": "What is a Node?",
       "youtube": "https://youtube.com/shorts/fEsL2yE0igs"
+    },
+    {
+      "day": 6,
+      "topic": "What is a Cluster?",
+      "youtube": "https://youtube.com/shorts/XNmwqoAOhd8"
     }
   ]
 }
