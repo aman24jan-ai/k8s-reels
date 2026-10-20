@@ -174,72 +174,71 @@ class Reel:
 
         paste(fr, self.brand, SAFE_L, 150, 0.9)
 
-        # Scene 1: hook (0 - 3.2 s)
-        if t < 3.4:
-            a_in = ease_out(t / 0.5)
-            a_out = 1 - ease_out((t - 2.9) / 0.4)
+        # Scene 1: hook (0 - 2.5 s)
+        if t < 2.6:
+            a_in = ease_out(t / 0.4)
+            a_out = 1 - ease_out((t - 1.9) / 0.45)
             a = min(a_in, a_out)
-            paste(fr, self.pill, SAFE_L, 560 - 40 * (1 - a_in), a)
-            k = ease_out((t - 0.2) / 0.6)
-            paste(fr, self.hook, SAFE_L, 680 + 120 * (1 - k), min(k, a_out))
-            bar_w = int((SAFE_R - SAFE_L) * 0.35 * ease_out((t - 0.6) / 0.6))
-            d.rounded_rectangle((SAFE_L, 680 + self.hook.height + 40,
-                                 SAFE_L + max(bar_w, 1), 680 + self.hook.height + 56), 8,
+            paste(fr, self.pill, SAFE_L, 520 - 20 * (1 - a_in), a)
+            k = ease_out((t - 0.05) / 0.45)
+            paste(fr, self.hook, SAFE_L, 630 + 70 * (1 - k), min(k, a_out))
+            bar_w = int((SAFE_R - SAFE_L) * 0.24 * ease_out((t - 0.2) / 0.45))
+            d.rounded_rectangle((SAFE_L, 630 + self.hook.height + 20,
+                                 SAFE_L + max(bar_w, 1), 630 + self.hook.height + 36), 8,
                                 fill=CYAN + (int(255 * a_out),))
 
-        # Scene 2: title + points + command (3.2 - 12.4 s)
-        if 3.0 <= t < 12.8:
-            a_out = 1 - ease_out((t - 12.2) / 0.5)
-            k = ease_out_back((t - 3.2) / 0.6)
-            ia = min(ease_out((t - 3.2) / 0.4), a_out)
-            self._hex_icon(fr, SAFE_L + 55, SAFE_T + 85, 55 * max(k, 0.01), t, ia)
-            paste(fr, self.title, SAFE_L + 140 + 60 * (1 - ease_out((t - 3.3) / 0.5)),
-                  SAFE_T + 85 - self.title.height / 2, min(ease_out((t - 3.3) / 0.5), a_out))
+        # Scene 2: title + points + command (2.5 - 11.8 s)
+        if 2.4 <= t < 11.9:
+            a_out = 1 - ease_out((t - 11.0) / 0.5)
+            k = ease_out_back((t - 2.5) / 0.48)
+            ia = min(ease_out((t - 2.5) / 0.3), a_out)
+            self._hex_icon(fr, SAFE_L + 55, SAFE_T + 90, 48 * max(k, 0.01), t, ia)
+            paste(fr, self.title, SAFE_L + 130 + 60 * (1 - ease_out((t - 2.6) / 0.42)),
+                  SAFE_T + 90 - self.title.height / 2, min(ease_out((t - 2.6) / 0.42), a_out))
             y = SAFE_T + 260
             for i, pl in enumerate(self.points):
-                st = 4.3 + i * 2.2
-                kk = ease_out((t - st) / 0.55)
+                st = 3.4 + i * 1.9
+                kk = ease_out((t - st) / 0.45)
                 if kk > 0:
                     a = min(kk, a_out)
-                    ch = max(pl.height + 60, 150)
-                    xoff = 80 * (1 - kk)
+                    ch = max(pl.height + 42, 112)
+                    xoff = 20 * (1 - kk)
                     card = Image.new("RGBA", (SAFE_R - SAFE_L, ch), (0, 0, 0, 0))
                     cd = ImageDraw.Draw(card)
-                    cd.rounded_rectangle((0, 0, card.width - 1, ch - 1), 28,
+                    cd.rounded_rectangle((0, 0, card.width - 1, ch - 1), 22,
                                          fill=CARD + (235,), outline=(60, 90, 170, 255), width=2)
                     cd.rounded_rectangle((0, 0, 12, ch - 1), 6, fill=CYAN + (255,))
-                    nf = font("InterDisplay-Black.otf", 56)
-                    cd.ellipse((38, ch / 2 - 38, 114, ch / 2 + 38), fill=BLUE + (255,))
+                    nf = font("InterDisplay-Black.otf", 48)
+                    cd.ellipse((22, ch / 2 - 24, 84, ch / 2 + 36), fill=BLUE + (255,))
                     num = str(i + 1)
-                    cd.text((76 - cd.textlength(num, font=nf) / 2, ch / 2 - 36), num,
+                    cd.text((50 - cd.textlength(num, font=nf) / 2, ch / 2 - 22), num,
                             font=nf, fill=WHITE)
-                    card.alpha_composite(pl, (140, int((ch - pl.height) / 2) + 4))
+                    card.alpha_composite(pl, (110, int((ch - pl.height) / 2) + 3))
                     paste(fr, card, SAFE_L + xoff, y, a)
-                y += max(pl.height + 60, 150) + 30
+                y += max(pl.height + 44, 110) + 12
             if self.cmd is not None:
-                kk = ease_out((t - 10.6) / 0.5)
+                kk = ease_out((t - 9.4) / 0.48)
                 if kk > 0:
-                    box = Image.new("RGBA", (SAFE_R - SAFE_L, self.cmd.height + 90), (0, 0, 0, 0))
+                    box = Image.new("RGBA", (SAFE_R - SAFE_L, self.cmd.height + 62), (0, 0, 0, 0))
                     bd = ImageDraw.Draw(box)
-                    bd.rounded_rectangle((0, 0, box.width - 1, box.height - 1), 22,
+                    bd.rounded_rectangle((0, 0, box.width - 1, box.height - 1), 18,
                                          fill=(4, 8, 18, 240), outline=(40, 60, 110, 255), width=2)
                     for j, c in enumerate([(255, 95, 86), (255, 189, 46), (39, 201, 63)]):
-                        bd.ellipse((26 + j * 34, 18, 46 + j * 34, 38), fill=c + (255,))
-                    # typewriter reveal
-                    reveal = ease_out((t - 10.7) / 1.0)
+                        bd.ellipse((18 + j * 30, 16, 38 + j * 30, 36), fill=c + (255,))
+                    reveal = ease_out((t - 9.6) / 0.75)
                     crop_w = max(1, int(self.cmd.width * reveal))
-                    box.alpha_composite(self.cmd.crop((0, 0, crop_w, self.cmd.height)), (40, 60))
-                    paste(fr, box, SAFE_L, max(y, SAFE_B - box.height - 20), min(kk, a_out))
+                    box.alpha_composite(self.cmd.crop((0, 0, crop_w, self.cmd.height)), (24, 22))
+                    paste(fr, box, SAFE_L, max(y, SAFE_B - box.height - 18), min(kk, a_out))
 
-        # Scene 3: call to action (12.4 - 15 s)
-        if t >= 12.3:
-            k = ease_out_back((t - 12.4) / 0.6)
-            a = ease_out((t - 12.4) / 0.4)
-            self._hex_icon(fr, W / 2, 700, 110 * max(k, 0.01), t, a)
-            paste(fr, self.cta, SAFE_L, 880 + 60 * (1 - ease_out((t - 12.5) / 0.5)), a)
+        # Scene 3: call to action (11.6 - 15 s)
+        if t >= 11.5:
+            k = ease_out_back((t - 11.6) / 0.5)
+            a = ease_out((t - 11.6) / 0.4)
+            self._hex_icon(fr, W / 2, 710, 92 * max(k, 0.01), t, a)
+            paste(fr, self.cta, SAFE_L, 880 + 40 * (1 - ease_out((t - 11.7) / 0.42)), a)
             if self.handle_l is not None:
-                paste(fr, self.handle_l, SAFE_L, 880 + self.cta.height + 40,
-                      ease_out((t - 12.9) / 0.4))
+                paste(fr, self.handle_l, SAFE_L, 880 + self.cta.height + 18,
+                      ease_out((t - 12.0) / 0.3))
 
         # progress bar
         d.rectangle((0, H - 14, int(W * min(t / DURATION, 1)), H), fill=CYAN + (255,))

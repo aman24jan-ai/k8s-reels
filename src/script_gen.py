@@ -16,13 +16,16 @@ Topic: "{topic}"
 
 Rules:
 - Be 100% technically accurate. No made-up commands or flags.
-- "voiceover": {lang_rule} 32 to 38 words total. Plain sentences, no emojis, no hashtags, no markdown.
-- "hook": max 6 words, on-screen, English.
-- "title": max 4 words, on-screen, English.
-- "points": exactly 3 short on-screen bullet points in English, max 6 words each.
+- Make the reel feel like a story: strong hook, simple problem, one key lesson, quick practical takeaway.
+- "hook": max 5 words, curiosity-driven, powerful, on-screen, English.
+- "title": max 3 words, clear and punchy, on-screen, English.
+- "points": exactly 3 short on-screen bullet points in English, max 4 words each.
+- "voiceover": {lang_rule} 30 to 35 words total. Fast, spoken, natural, no emojis, no hashtags, no markdown.
 - "command": one real, safe kubectl/helm command related to the topic (max 40 chars), or "" if none fits.
-- "caption": one-line social caption in English, max 15 words.
+- "caption": one-line social caption in English, max 15 words, with a practical takeaway.
 - "hashtags": 5 relevant hashtags, each starting with #.
+- Avoid generic definitions. Focus on what breaks, why it matters, and the one fix learners remember.
+- Make it feel like a short, practical tutorial, not a textbook explanation.
 
 Reply with ONLY valid JSON with keys: hook, title, points, command, voiceover, caption, hashtags."""
 
