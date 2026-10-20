@@ -11,23 +11,33 @@ FALLBACK_MODELS = ["gemini-flash-latest", "gemini-3.8-flash", "gemini-3.6-flash"
                    "gemini-3.5-flash-lite", "gemini-3.1-flash-lite"]
 LANGUAGE = os.environ.get("REEL_LANGUAGE", "english")  # english | hinglish
 
-PROMPT = """You write scripts for 15-second vertical Kubernetes explainer reels for beginners.
+PROMPT = """You write scripts for viral 15-second vertical Kubernetes explainer reels for beginners.
 Topic: "{topic}"
+
+The viewer decides in 1 second whether to keep watching, so the opening must create curiosity.
 
 Rules:
 - Be 100% technically accurate. No made-up commands or flags.
-- Make the reel feel like a story: strong hook, simple problem, one key lesson, quick practical takeaway.
-- "hook": max 5 words, curiosity-driven, powerful, on-screen, English.
-- "title": max 3 words, clear and punchy, on-screen, English.
-- "points": exactly 3 short on-screen bullet points in English, max 4 words each.
-- "voiceover": {lang_rule} 30 to 35 words total. Fast, spoken, natural, no emojis, no hashtags, no markdown.
+- "hook": max 6 words, on-screen, English. A bold claim, surprising fact, common mistake or
+  direct question. Never start with "What is" or "Let's learn". Good examples:
+  "Your app crashed. Kubernetes didn't care.", "Stop running containers like this",
+  "90% of beginners get this wrong".
+- "title": max 4 words, on-screen, English.
+- "analogy": max 9 words, on-screen, English. A simple real-world comparison,
+  e.g. "A Pod is a lunchbox holding your containers".
+- "points": exactly 3 punchy on-screen points in English, max 6 words each.
 - "command": one real, safe kubectl/helm command related to the topic (max 40 chars), or "" if none fits.
-- "caption": one-line social caption in English, max 15 words, with a practical takeaway.
+- "question": max 8 words, on-screen. A quick question viewers can answer in the comments,
+  e.g. "Which one do you use: Deployment or StatefulSet?".
+- "keywords": 2-3 single important words that appear in the hook, title or points, to highlight.
+- "voiceover": {lang_rule} 32 to 38 words total. Structure: say the hook, then the analogy,
+  then the 3 points, in a fast, energetic, conversational tone. Short sentences.
+  No emojis, no hashtags, no markdown, no "in this video".
+- "caption": one-line social caption in English, max 15 words, ending with the question.
 - "hashtags": 5 relevant hashtags, each starting with #.
-- Avoid generic definitions. Focus on what breaks, why it matters, and the one fix learners remember.
-- Make it feel like a short, practical tutorial, not a textbook explanation.
 
-Reply with ONLY valid JSON with keys: hook, title, points, command, voiceover, caption, hashtags."""
+Reply with ONLY valid JSON with keys: hook, title, analogy, points, command, question,
+keywords, voiceover, caption, hashtags."""
 
 LANG_RULES = {
     "hinglish": "Natural spoken Hinglish written in Devanagari script, keep technical terms "
@@ -51,6 +61,12 @@ def _validate(d: dict) -> dict:
     if len(d["points"]) < 3:
         raise ValueError("need 3 points")
     d.setdefault("command", "")
+    d.setdefault("analogy", "")
+    d.setdefault("question", "")
+    kw = d.get("keywords") or []
+    if isinstance(kw, str):
+        kw = kw.replace(",", " ").split()
+    d["keywords"] = [str(k).strip("#").lower() for k in kw][:3]
     if isinstance(d["hashtags"], str):
         d["hashtags"] = d["hashtags"].split()
     return d

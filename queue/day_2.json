@@ -1,0 +1,16 @@
+{
+  "hook": "Your app works on your laptop only?",
+  "title": "What is a Container?",
+  "analogy": "A shipping box with your app and everything it needs",
+  "points": [
+    "Packs code, libraries and config",
+    "Runs the same on any machine",
+    "Starts in seconds, not minutes"
+  ],
+  "command": "docker run -d -p 8080:80 nginx",
+  "question": "Docker or Podman: which do you use?",
+  "keywords": ["container", "laptop", "same"],
+  "voiceover": "Your app works on your laptop, but breaks on the server? A container fixes that. Think of it as a shipping box. It packs your code, libraries and config, runs the same everywhere, and starts in seconds.",
+  "caption": "Containers explained in 15 seconds. Docker or Podman: which do you use?",
+  "hashtags": ["#docker", "#containers", "#kubernetes", "#devops", "#cloud"]
+}

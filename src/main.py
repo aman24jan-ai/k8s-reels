@@ -1,4 +1,4 @@
-"""Daily pipeline: topic -> script -> voice -> reel -> YouTube Shorts."""
+"""Daily pipeline: topic -> script -> voice -> reel -> YouTube Shorts + Instagram Reels."""
 import json
 import os
 import sys
@@ -54,10 +54,11 @@ def main() -> None:
 
     audio = os.path.join(OUT, f"day_{day}.mp3")
     from voice import make_voiceover
-    make_voiceover(script["voiceover"], audio, language)
+    voice_seconds, words = make_voiceover(script["voiceover"], audio, language)
 
     video = os.path.join(OUT, f"day_{day}.mp4")
-    render.render(script, audio, video, day=day, handle=handle)
+    render.render(script, audio, video, day=day, handle=handle, words=words,
+                  voice_seconds=voice_seconds)
     print(f"Rendered {video}")
 
     tags = script.get("hashtags", [])
@@ -69,7 +70,10 @@ def main() -> None:
     else:
         if flag("POST_YOUTUBE", "true"):
             from upload_youtube import upload as yt
-            title = f"{script['title']} | Kubernetes in 15s #Shorts"
+            # curiosity-first title: the hook, then the topic
+            title = f"{script['hook'].rstrip('.')} | {script['title']} #Shorts"
+            if len(title) > 100:
+                title = f"{script['title']} | Kubernetes in 15s #Shorts"
             result["youtube"] = yt(video, title, caption, tags)
             print("YouTube:", result["youtube"])
         if flag("POST_INSTAGRAM", "false"):
