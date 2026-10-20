@@ -1,0 +1,114 @@
+{
+  "topic": "What is kubelet?",
+  "title": "The hidden agent running every single Kubernetes node",
+  "caption": "Kubelet is the unsung hero of Kubernetes worker nodes. Have you ever had a node flip to NotReady?",
+  "hashtags": [
+    "#kubernetes",
+    "#k8s",
+    "#devops",
+    "#cloudnative",
+    "#sysadmin"
+  ],
+  "keywords": [
+    "kubelet",
+    "worker node",
+    "container runtime"
+  ],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "Kubernetes control plane never starts containers directly. Every worker node runs an unsung hero called kubelet to do the dirty work.",
+      "heading": "KUBELET",
+      "card": "KUBELET",
+      "card_cue": "hero",
+      "card_label": "NODE AGENT",
+      "point_cue": "dirty",
+      "wrap_label": "WORKER NODE",
+      "wrap_cue": "node",
+      "tagline": "RUNS ON EVERY NODE",
+      "tagline_cue": "runs"
+    },
+    {
+      "type": "analogy",
+      "vo": "Think of kubelet like an on-site foreman. Headquarters sends blueprints, and the foreman makes sure the job gets done.",
+      "heading": "THE FOREMAN",
+      "cards": [
+        "PODSPEC"
+      ],
+      "line": "AN ON-SITE FOREMAN FOR YOUR PODS",
+      "cue": "foreman"
+    },
+    {
+      "type": "flow",
+      "vo": "Kubelet fetches Pod specs from the API server, orders the container runtime to start them, and continuously checks their health.",
+      "heading": "HOW IT WORKS",
+      "steps": [
+        {
+          "label": "API SERVER",
+          "cue": "fetches",
+          "side": "PODSPEC"
+        },
+        {
+          "label": "CONTAINERD",
+          "cue": "runtime",
+          "side": "START"
+        },
+        {
+          "label": "HEALTH CHECK",
+          "cue": "health"
+        }
+      ],
+      "note": "REPORTS TO API",
+      "note_cue": "checks"
+    },
+    {
+      "type": "node_rows",
+      "vo": "If kubelet crashes, the node flips to NotReady. The containers might still run, but Kubernetes goes completely blind.",
+      "heading": "KUBELET CRASHES",
+      "heading_cue": "crashes",
+      "box_label": "CLUSTER",
+      "rows": 2,
+      "row_status": "READY",
+      "fail_row": 1,
+      "fail_cue": "flips",
+      "fail_status": "NOTREADY",
+      "note": "K8S GOES BLIND",
+      "note_cue": "blind"
+    },
+    {
+      "type": "trick",
+      "vo": "When a node drops offline, don't guess. Check the kubelet service directly on the host using systemctl.",
+      "heading": "CHECK KUBELET",
+      "strike": "guess what happened",
+      "strike_cue": "guess",
+      "terminal": [
+        "systemctl status kubelet",
+        "journalctl -u kubelet -e"
+      ],
+      "terminal_cue": "systemctl",
+      "result_count": 1,
+      "result_cue": "service",
+      "status": "active (running)"
+    },
+    {
+      "type": "recap",
+      "vo": "So kubelet: the node agent, the pod builder, and your node heartbeat. Follow for more Kubernetes made simple.",
+      "heading": "KUBELET",
+      "pills": [
+        {
+          "text": "NODE AGENT",
+          "cue": "agent"
+        },
+        {
+          "text": "POD BUILDER",
+          "cue": "builder"
+        },
+        {
+          "text": "NODE HEARTBEAT",
+          "cue": "heartbeat"
+        }
+      ],
+      "follow_cue": "follow"
+    }
+  ]
+}

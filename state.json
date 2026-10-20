@@ -1,5 +1,5 @@
 {
-  "day": 10,
+  "day": 11,
   "history": [
     {
       "day": 1,
@@ -53,6 +53,12 @@
       "topic": "What is the Scheduler?",
       "style": "whiteboard",
       "youtube": "https://youtube.com/shorts/KqCTRZnkXJY"
+    },
+    {
+      "day": 11,
+      "topic": "What is kubelet?",
+      "style": "whiteboard",
+      "youtube": "https://youtube.com/shorts/5haZYEw6fP4"
     }
   ]
 }
