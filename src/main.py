@@ -106,7 +106,11 @@ def main() -> None:
     else:
         if flag("POST_YOUTUBE", "true"):
             from upload_youtube import upload as yt
-            result["youtube"] = yt(video, title, description, tags)
+            default_thumb = os.path.join(ROOT, "assets", "thumbs", "kubernetes_default.jpg")
+            thumbnail = os.environ.get("YT_THUMBNAIL") or default_thumb
+            if not os.path.exists(thumbnail):
+                thumbnail = None
+            result["youtube"] = yt(video, title, description, tags, thumbnail_path=thumbnail)
             print("YouTube:", result["youtube"])
         if flag("POST_INSTAGRAM", "false"):
             from upload_instagram import upload as ig

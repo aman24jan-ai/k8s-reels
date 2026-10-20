@@ -1,12 +1,14 @@
 """Upload a Short to YouTube with the free YouTube Data API (OAuth refresh token)."""
 import os
+from typing import Optional
 
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
 
-def upload(video_path: str, title: str, description: str, tags: list[str]) -> str:
+def upload(video_path: str, title: str, description: str, tags: list[str],
+           thumbnail_path: Optional[str] = None) -> str:
     creds = Credentials(
         token=None,
         refresh_token=os.environ["YT_REFRESH_TOKEN"],
@@ -35,4 +37,9 @@ def upload(video_path: str, title: str, description: str, tags: list[str]) -> st
     resp = None
     while resp is None:
         _, resp = req.next_chunk()
+
+    if thumbnail_path and os.path.exists(thumbnail_path):
+        thumb = MediaFileUpload(thumbnail_path, mimetype="image/jpeg")
+        yt.thumbnails().set(videoId=resp["id"], media_body=thumb).execute()
+
     return f"https://youtube.com/shorts/{resp['id']}"
