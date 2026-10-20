@@ -1,5 +1,5 @@
 {
-  "day": 9,
+  "day": 10,
   "history": [
     {
       "day": 1,
@@ -47,6 +47,12 @@
       "topic": "What is etcd?",
       "style": "whiteboard",
       "youtube": "https://youtube.com/shorts/_jaJFFKj92Y"
+    },
+    {
+      "day": 10,
+      "topic": "What is the Scheduler?",
+      "style": "whiteboard",
+      "youtube": "https://youtube.com/shorts/KqCTRZnkXJY"
     }
   ]
 }

@@ -1,0 +1,114 @@
+{
+  "topic": "What is the Scheduler?",
+  "title": "Your Pod is ready, but Kubernetes won't run it yet",
+  "caption": "How kube-scheduler picks the perfect server for your Pod. Ever had a Pod stuck in Pending?",
+  "hashtags": [
+    "#kubernetes",
+    "#k8s",
+    "#devops",
+    "#cloudcomputing",
+    "#sysadmin"
+  ],
+  "keywords": [
+    "scheduler",
+    "kube-scheduler",
+    "pending"
+  ],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "When you create a Pod, Kubernetes doesn't know where to put it. It starts unassigned, stuck waiting for a home.",
+      "heading": "THE SCHEDULER",
+      "card": "NEW POD",
+      "card_cue": "create",
+      "card_label": "unscheduled",
+      "point_cue": "unassigned",
+      "wrap_label": "PENDING",
+      "wrap_cue": "waiting",
+      "tagline": "NO NODE ASSIGNED YET",
+      "tagline_cue": "home"
+    },
+    {
+      "type": "analogy",
+      "vo": "Think of kube-scheduler as a restaurant host. It checks your party size, then finds an empty table with enough chairs.",
+      "heading": "THE HOST",
+      "cards": [
+        "POD",
+        "HOST"
+      ],
+      "line": "Like a restaurant host finding you a table.",
+      "cue": "host"
+    },
+    {
+      "type": "flow",
+      "vo": "First, it filters out servers lacking memory. Next, it scores the survivors to pick the best match, and binds the Pod.",
+      "heading": "TWO PHASES",
+      "steps": [
+        {
+          "label": "FILTERING",
+          "cue": "filters",
+          "side": "drop full"
+        },
+        {
+          "label": "SCORING",
+          "cue": "scores",
+          "side": "pick best"
+        },
+        {
+          "label": "BINDING",
+          "cue": "binds",
+          "side": "set node"
+        }
+      ],
+      "note": "SCHEDULED TO NODE-02",
+      "note_cue": "servers"
+    },
+    {
+      "type": "node_rows",
+      "vo": "If every worker node is full, the scheduler can't place it. Your Pod stays stuck in Pending.",
+      "heading": "NO CAPACITY",
+      "heading_cue": "scheduler",
+      "box_label": "CLUSTER",
+      "rows": 3,
+      "row_status": "FULL",
+      "fail_row": 2,
+      "fail_cue": "stuck",
+      "fail_status": "NO ROOM",
+      "note": "0/3 NODES AVAILABLE",
+      "note_cue": "pending"
+    },
+    {
+      "type": "trick",
+      "vo": "Never guess why it's trapped. Run describe pod to reveal exactly which scheduling constraint failed.",
+      "heading": "THE FIX",
+      "strike": "guess why it failed",
+      "strike_cue": "guess",
+      "terminal": [
+        "kubectl describe pod my-app",
+        "Events: 0/3 nodes available"
+      ],
+      "terminal_cue": "describe",
+      "status": "INSUFFICIENT CPU"
+    },
+    {
+      "type": "recap",
+      "vo": "So, the scheduler filters, scores, and assigns every Pod. Follow for more clear Kubernetes guides!",
+      "heading": "SCHEDULER",
+      "pills": [
+        {
+          "text": "FILTERS OUT FULL",
+          "cue": "filters"
+        },
+        {
+          "text": "SCORES BEST FIT",
+          "cue": "scores"
+        },
+        {
+          "text": "ASSIGNS TO NODE",
+          "cue": "assigns"
+        }
+      ],
+      "follow_cue": "follow"
+    }
+  ]
+}
