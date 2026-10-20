@@ -1,5 +1,5 @@
 {
-  "day": 6,
+  "day": 7,
   "history": [
     {
       "day": 1,
@@ -30,6 +30,11 @@
       "day": 6,
       "topic": "What is a Cluster?",
       "youtube": "https://youtube.com/shorts/XNmwqoAOhd8"
+    },
+    {
+      "day": 7,
+      "topic": "Control Plane vs Worker Node",
+      "youtube": "https://youtube.com/shorts/OEzsmo_5dgM"
     }
   ]
 }

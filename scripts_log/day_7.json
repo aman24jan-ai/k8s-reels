@@ -1,0 +1,27 @@
+{
+  "hook": "Where does your code actually run?",
+  "title": "Control Plane vs Worker",
+  "analogy": "Control plane is the brain, workers are muscles.",
+  "points": [
+    "Control plane decides and schedules.",
+    "Worker nodes run your containers.",
+    "Workers fail, control plane recovers."
+  ],
+  "command": "kubectl get nodes -o wide",
+  "question": "Do you run control planes yourself?",
+  "keywords": [
+    "control",
+    "worker",
+    "containers"
+  ],
+  "voiceover": "Where does your code actually run? Control plane is the brain, workers are muscles. The control plane decides and schedules everything. Worker nodes actually run your containers. If workers fail, the control plane recovers them instantly.",
+  "caption": "Understand the core of Kubernetes architecture! Do you run control planes yourself?",
+  "hashtags": [
+    "#kubernetes",
+    "#devops",
+    "#cloudnative",
+    "#docker",
+    "#k8s"
+  ],
+  "topic": "Control Plane vs Worker Node"
+}
