@@ -8,11 +8,9 @@ on:
     # 2:30 PM IST = 09:00 UTC
     # 6:00 PM IST = 12:30 UTC
     # 10:00 PM IST = 16:30 UTC
-    - cron: "30 03 * * *"
     - cron: "00 06 * * *"
     - cron: "00 09 * * *"
     - cron: "30 12 * * *"
-    - cron: "30 16 * * *"
   workflow_dispatch:
     inputs:
       dry_run:

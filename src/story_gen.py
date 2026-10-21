@@ -143,22 +143,39 @@ def _ask(prompt: str) -> str:
     body = {"contents": [{"parts": [{"text": prompt}]}],
             "generationConfig": {"temperature": 0.6, "responseMimeType": "application/json"}}
     last = None
+    timeout = int(os.environ.get("GEMINI_TIMEOUT", "180"))
     for model in [GEMINI_MODEL] + [m for m in FALLBACK_MODELS if m != GEMINI_MODEL]:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
         for attempt in range(3):
-            r = requests.post(url, params={"key": key}, json=body, timeout=90)
+            try:
+                r = requests.post(url, params={"key": key}, json=body, timeout=timeout)
+            except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
+                # slow or dropped connection: retry once, then move on to the next model
+                last = f"{model}: {type(e).__name__}"
+                print(f"Gemini {model} timed out/disconnected (attempt {attempt + 1})",
+                      file=sys.stderr)
+                if attempt >= 1:
+                    break
+                time.sleep(10)
+                continue
             if r.status_code == 404:
                 last = f"model {model} not available"
                 break
-            if r.status_code in (429, 500, 503):
-                last = f"Gemini busy ({r.status_code})"
+            if r.status_code in (429, 500, 502, 503, 504):
+                last = f"Gemini busy ({r.status_code}) on {model}"
                 time.sleep(15 * (attempt + 1))
                 continue
             if r.status_code >= 400:
                 raise RuntimeError(f"Gemini error {r.status_code}: {r.text[:300]}")
+            try:
+                text = r.json()["candidates"][0]["content"]["parts"][0]["text"]
+            except (KeyError, IndexError, ValueError):
+                last = f"{model}: empty or blocked reply"
+                time.sleep(5)
+                continue
             print(f"Story written with {model}", file=sys.stderr)
-            return r.json()["candidates"][0]["content"]["parts"][0]["text"]
-    raise RuntimeError(f"Gemini unavailable: {last}")
+            return text
+    raise RuntimeError(f"Gemini unavailable after trying all models: {last}")
 
 
 def _parse(text: str) -> dict:
