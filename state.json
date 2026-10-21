@@ -1,5 +1,5 @@
 {
-  "day": 11,
+  "day": 12,
   "history": [
     {
       "day": 1,
@@ -59,6 +59,12 @@
       "topic": "What is kubelet?",
       "style": "whiteboard",
       "youtube": "https://youtube.com/shorts/5haZYEw6fP4"
+    },
+    {
+      "day": 12,
+      "topic": "What is kube-proxy?",
+      "style": "whiteboard",
+      "youtube": "https://youtube.com/shorts/6JCUXvc-mWw"
     }
   ]
 }

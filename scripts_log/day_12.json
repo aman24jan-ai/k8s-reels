@@ -1,0 +1,101 @@
+{
+  "topic": "What is kube-proxy?",
+  "title": "Your Service IP is a lie. Here's how Kubernetes routes it",
+  "caption": "kube-proxy explained in 40 seconds. Are you running iptables or IPVS mode in your cluster?",
+  "hashtags": [
+    "#kubernetes",
+    "#k8s",
+    "#networking",
+    "#devops",
+    "#cloud"
+  ],
+  "keywords": [
+    "kube-proxy",
+    "iptables",
+    "clusterip"
+  ],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "Kubernetes Service IPs are completely fake. No real network card owns that address, so how does traffic ever reach your Pods?",
+      "heading": "KUBE-PROXY",
+      "card": "SERVICE IP",
+      "card_cue": "fake",
+      "card_label": "virtual ip",
+      "point_cue": "reach",
+      "wrap_label": "WORKER NODE",
+      "wrap_cue": "network",
+      "card2": "TARGET POD",
+      "card2_cue": "pods",
+      "group_label": "cluster network",
+      "tagline": "VIRTUAL IP ROUTER",
+      "tagline_cue": "completely"
+    },
+    {
+      "type": "analogy",
+      "vo": "Meet kube-proxy. Think of it as a train switchboard operator living on every single worker node.",
+      "heading": "THE OPERATOR",
+      "cards": [
+        "SWITCHBOARD"
+      ],
+      "line": "routes tracks on every node",
+      "cue": "switchboard"
+    },
+    {
+      "type": "flow",
+      "vo": "It watches for new Services, then writes iptables or IPVS rules to send packets directly to healthy Pods.",
+      "heading": "HOW IT ROUTES",
+      "steps": [
+        {
+          "label": "SERVICE VIP",
+          "cue": "services"
+        },
+        {
+          "label": "IPTABLES RULES",
+          "cue": "iptables"
+        },
+        {
+          "label": "HEALTHY POD",
+          "cue": "pods"
+        }
+      ],
+      "note": "kernel packet forwarding",
+      "note_cue": "packets"
+    },
+    {
+      "type": "trick",
+      "vo": "Instead of checking manual routing tables, inspect the kube-proxy DaemonSet in kube-system with kubectl.",
+      "heading": "CHECK DAEMONSET",
+      "strike": "manual routing tables",
+      "strike_cue": "manual",
+      "terminal": [
+        "kubectl get ds -n kube-system",
+        "NAME: kube-proxy"
+      ],
+      "terminal_cue": "kubectl",
+      "result_count": 3,
+      "result_cue": "daemonset",
+      "status": "3 / 3 ready"
+    },
+    {
+      "type": "recap",
+      "vo": "So kube-proxy: runs on every node, programs Linux routing rules, and makes Service IPs actually work. Follow for more plain English Kubernetes!",
+      "heading": "KUBE-PROXY",
+      "pills": [
+        {
+          "text": "RUNS ON EVERY NODE",
+          "cue": "node"
+        },
+        {
+          "text": "PROGRAMS IPTABLES",
+          "cue": "routing"
+        },
+        {
+          "text": "POWERS SERVICE IPS",
+          "cue": "service"
+        }
+      ],
+      "follow_cue": "follow"
+    }
+  ]
+}
