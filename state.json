@@ -1,5 +1,5 @@
 {
-  "day": 13,
+  "day": 14,
   "history": [
     {
       "day": 1,
@@ -71,6 +71,12 @@
       "topic": "What is a ReplicaSet?",
       "style": "whiteboard",
       "youtube": "https://youtube.com/shorts/EkJ6uvFPwdk"
+    },
+    {
+      "day": 14,
+      "topic": "What is a Deployment?",
+      "style": "whiteboard",
+      "youtube": "https://youtube.com/shorts/ocDxACK25bs"
     }
   ]
 }

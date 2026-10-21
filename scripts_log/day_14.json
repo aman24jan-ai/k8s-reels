@@ -1,0 +1,97 @@
+{
+  "topic": "What is a Deployment?",
+  "title": "Never deploy a raw Pod in Kubernetes. Do this instead",
+  "caption": "Kubernetes Deployments explained in 40 seconds. How do you handle rolling updates in production?",
+  "hashtags": [
+    "#kubernetes",
+    "#k8s",
+    "#devops",
+    "#cloud",
+    "#docker"
+  ],
+  "keywords": [
+    "deployment",
+    "replicaset",
+    "pod"
+  ],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "If a raw Pod crashes at three AM, nobody brings it back. A Deployment wraps your Pods so they stay alive forever.",
+      "heading": "DEPLOYMENTS",
+      "card": "RAW POD",
+      "card_cue": "crashes",
+      "card_label": "unmanaged",
+      "point_cue": "wraps",
+      "wrap_label": "DEPLOYMENT",
+      "wrap_cue": "deployment",
+      "card2": "NEW POD",
+      "card2_cue": "alive",
+      "group_label": "MANAGED PODS",
+      "tagline": "AUTOMATED POD MANAGER",
+      "tagline_cue": "forever"
+    },
+    {
+      "type": "analogy",
+      "vo": "Think of a Deployment like a vending machine supervisor, constantly restocking snacks the moment one drops.",
+      "heading": "THE SUPERVISOR",
+      "cards": [
+        "SUPERVISOR",
+        "SHELF"
+      ],
+      "line": "Restocks empty shelves automatically",
+      "cue": "restocking"
+    },
+    {
+      "type": "node_rows",
+      "vo": "You declare a desired count of three replicas. If one Pod fails, Kubernetes spots the gap and launches a replacement.",
+      "heading": "DESIRED STATE",
+      "heading_cue": "replicas",
+      "box_label": "CLUSTER",
+      "rows": 3,
+      "row_status": "RUNNING",
+      "fail_row": 1,
+      "fail_cue": "fails",
+      "fail_status": "CRASHED",
+      "replace_cue": "launches",
+      "replace_status": "RUNNING",
+      "note": "always 3 pods",
+      "note_cue": "gap"
+    },
+    {
+      "type": "trick",
+      "vo": "Want to ship a new version with zero downtime? Update the image, and Kubernetes rolls out new Pods one by one.",
+      "heading": "ROLLING UPDATE",
+      "strike": "downtime during deploy",
+      "strike_cue": "downtime",
+      "terminal": [
+        "kubectl set image deploy/web",
+        "web=nginx:1.25"
+      ],
+      "terminal_cue": "image",
+      "result_count": 3,
+      "result_cue": "rolls",
+      "status": "3 / 3 UPDATED"
+    },
+    {
+      "type": "recap",
+      "vo": "Deployments bring self healing, rolling updates, and effortless scaling. Follow for more Kubernetes in plain English.",
+      "heading": "DEPLOYMENTS",
+      "pills": [
+        {
+          "text": "SELF HEALING",
+          "cue": "healing"
+        },
+        {
+          "text": "ROLLING UPDATES",
+          "cue": "rolling"
+        },
+        {
+          "text": "EASY SCALING",
+          "cue": "scaling"
+        }
+      ],
+      "follow_cue": "follow"
+    }
+  ]
+}
