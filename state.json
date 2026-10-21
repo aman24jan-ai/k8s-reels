@@ -1,5 +1,5 @@
 {
-  "day": 14,
+  "day": 15,
   "history": [
     {
       "day": 1,
@@ -77,6 +77,12 @@
       "topic": "What is a Deployment?",
       "style": "whiteboard",
       "youtube": "https://youtube.com/shorts/ocDxACK25bs"
+    },
+    {
+      "day": 15,
+      "topic": "Rolling Updates",
+      "style": "whiteboard",
+      "youtube": "https://youtube.com/shorts/s1RlIs4Si34"
     }
   ]
 }

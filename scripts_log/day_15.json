@@ -1,0 +1,118 @@
+{
+  "topic": "Rolling Updates",
+  "title": "Deploying updates without killing live users? Here's the trick",
+  "caption": "Zero-downtime deployments demystified. What is your go-to rollback strategy?",
+  "hashtags": [
+    "#kubernetes",
+    "#k8s",
+    "#devops",
+    "#cloud",
+    "#deployment"
+  ],
+  "keywords": [
+    "rolling update",
+    "zero downtime",
+    "kubectl rollout"
+  ],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "Updating live software without taking your entire site down sounds impossible. Kubernetes solves this with Rolling Updates.",
+      "heading": "ROLLING UPDATES",
+      "card": "VERSION 1",
+      "card_cue": "software",
+      "card_label": "POD",
+      "point_cue": "without",
+      "wrap_label": "DEPLOYMENT",
+      "wrap_cue": "Kubernetes",
+      "card2": "VERSION 2",
+      "card2_cue": "Updates",
+      "group_label": "ZERO DOWNTIME",
+      "tagline": "SEAMLESS DEPLOY",
+      "tagline_cue": "Rolling"
+    },
+    {
+      "type": "analogy",
+      "vo": "Think of changing racecar tires one by one during a pit stop, so the car never touches bare ground.",
+      "heading": "THE ANALOGY",
+      "cards": [
+        "PIT STOP",
+        "TIRES"
+      ],
+      "line": "SWAPPING TIRES WHILE ROLLING",
+      "cue": "pit"
+    },
+    {
+      "type": "flow",
+      "vo": "Kubernetes spins up a new pod first, waits for health checks, and then safely deletes an old pod.",
+      "heading": "HOW IT WORKS",
+      "steps": [
+        {
+          "label": "START NEW POD V2",
+          "cue": "spins"
+        },
+        {
+          "label": "PASS HEALTH CHECK",
+          "cue": "health"
+        },
+        {
+          "label": "TERMINATE POD V1",
+          "cue": "deletes"
+        }
+      ],
+      "note": "TRAFFIC NEVER DROPS",
+      "note_cue": "safely"
+    },
+    {
+      "type": "node_rows",
+      "vo": "If your new version crashes immediately, Kubernetes pauses the rollout, keeping your users safe on working pods.",
+      "heading": "BAD RELEASE?",
+      "heading_cue": "crashes",
+      "box_label": "REPLICAS",
+      "rows": 3,
+      "row_status": "V1 RUNNING",
+      "fail_row": 2,
+      "fail_cue": "crashes",
+      "fail_status": "V2 FAILED",
+      "replace_cue": "pauses",
+      "replace_status": "HALTED",
+      "note": "OLD PODS REMAIN ALIVE",
+      "note_cue": "working"
+    },
+    {
+      "type": "trick",
+      "vo": "To recover instantly, you do not rewrite YAML. One kubectl command rolls back to your last revision.",
+      "heading": "INSTANT FIX",
+      "strike": "redeploy manually",
+      "strike_cue": "rewrite",
+      "terminal": [
+        "kubectl rollout undo",
+        "deployment/my-app"
+      ],
+      "terminal_cue": "kubectl",
+      "result_count": 3,
+      "result_cue": "rolls",
+      "status": "3 / 3 healthy"
+    },
+    {
+      "type": "recap",
+      "vo": "Rolling updates deliver zero downtime, automatic safety, and instant rollbacks. Follow for more Kubernetes made simple!",
+      "heading": "ROLLING UPDATES",
+      "pills": [
+        {
+          "text": "ZERO DOWNTIME",
+          "cue": "downtime"
+        },
+        {
+          "text": "AUTOMATIC SAFETY",
+          "cue": "automatic"
+        },
+        {
+          "text": "INSTANT ROLLBACK",
+          "cue": "rollbacks"
+        }
+      ],
+      "follow_cue": "Follow"
+    }
+  ]
+}
