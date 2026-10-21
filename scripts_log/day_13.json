@@ -1,0 +1,97 @@
+{
+  "topic": "What is a ReplicaSet?",
+  "title": "Why your Pods magically restart when they crash",
+  "caption": "ReplicaSets keep your Pods alive automatically. Have you ever written one directly?",
+  "hashtags": [
+    "#kubernetes",
+    "#k8s",
+    "#devops",
+    "#cloudnative",
+    "#sysadmin"
+  ],
+  "keywords": [
+    "replicaset",
+    "pod",
+    "deployment"
+  ],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "If your Pod dies at midnight, who replaces it? Meet the ReplicaSet, the silent engine that keeps identical copies running without downtime.",
+      "heading": "REPLICASET",
+      "card": "APP POD",
+      "card_cue": "pod",
+      "card_label": "pod",
+      "point_cue": "replaces",
+      "wrap_label": "REPLICASET",
+      "wrap_cue": "replicaset",
+      "card2": "COPY POD",
+      "card2_cue": "copies",
+      "group_label": "IDENTICAL PODS",
+      "tagline": "ZERO DOWNTIME",
+      "tagline_cue": "downtime"
+    },
+    {
+      "type": "analogy",
+      "vo": "Think of it like a bouncer with a strict headcount clicker. You demand three Pods, so it guarantees exactly three.",
+      "heading": "THE BOUNCER",
+      "cards": [
+        "HEADCOUNT: 3"
+      ],
+      "line": "A bouncer enforcing an exact headcount",
+      "cue": "bouncer"
+    },
+    {
+      "type": "node_rows",
+      "vo": "When a Pod crashes, the active count drops. The controller notices right away and spins up a brand-new replacement.",
+      "heading": "SELF HEALING",
+      "heading_cue": "notices",
+      "box_label": "CLUSTER",
+      "rows": 3,
+      "row_status": "RUNNING",
+      "fail_row": 1,
+      "fail_cue": "crashes",
+      "fail_status": "CRASHED",
+      "replace_cue": "spins",
+      "replace_status": "NEW POD",
+      "note": "HEADCOUNT RESTORED",
+      "note_cue": "replacement"
+    },
+    {
+      "type": "trick",
+      "vo": "The golden rule? You almost never write a ReplicaSet directly. You write a Deployment instead, which manages ReplicaSets for seamless rollouts.",
+      "heading": "THE TRICK",
+      "strike": "kind: ReplicaSet",
+      "strike_cue": "directly",
+      "terminal": [
+        "kind: Deployment",
+        "spec:",
+        "  replicas: 3"
+      ],
+      "terminal_cue": "deployment",
+      "result_count": 3,
+      "result_cue": "rollouts",
+      "status": "3 / 3 RUNNING"
+    },
+    {
+      "type": "recap",
+      "vo": "ReplicaSets guarantee target headcounts, rapid recovery, and effortless scaling. Follow along for more Kubernetes explained in plain English.",
+      "heading": "REPLICASET",
+      "pills": [
+        {
+          "text": "EXACT HEADCOUNT",
+          "cue": "headcounts"
+        },
+        {
+          "text": "AUTO RECOVERY",
+          "cue": "recovery"
+        },
+        {
+          "text": "SCALED BY DEPLOYMENT",
+          "cue": "scaling"
+        }
+      ],
+      "follow_cue": "follow"
+    }
+  ]
+}

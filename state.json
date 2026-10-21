@@ -1,5 +1,5 @@
 {
-  "day": 12,
+  "day": 13,
   "history": [
     {
       "day": 1,
@@ -65,6 +65,12 @@
       "topic": "What is kube-proxy?",
       "style": "whiteboard",
       "youtube": "https://youtube.com/shorts/6JCUXvc-mWw"
+    },
+    {
+      "day": 13,
+      "topic": "What is a ReplicaSet?",
+      "style": "whiteboard",
+      "youtube": "https://youtube.com/shorts/EkJ6uvFPwdk"
     }
   ]
 }
