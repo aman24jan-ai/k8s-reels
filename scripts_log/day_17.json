@@ -1,0 +1,115 @@
+{
+  "topic": "What is a Service?",
+  "title": "Why your Pod's IP address is a trap",
+  "caption": "Kubernetes Services explained simply. Do you use ClusterIP, NodePort, or LoadBalancer the most?",
+  "hashtags": [
+    "#kubernetes",
+    "#k8s",
+    "#devops",
+    "#cloud",
+    "#networking"
+  ],
+  "keywords": [
+    "service",
+    "clusterip",
+    "networking"
+  ],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "Pods die all the time, and every new Pod gets a completely different IP. How do clients ever find your app?",
+      "heading": "SERVICE",
+      "card": "POD IP",
+      "card_cue": "ip",
+      "card_label": "pod",
+      "point_cue": "die",
+      "tagline": "STABLE FRONT DOOR",
+      "tagline_cue": "find"
+    },
+    {
+      "type": "node_rows",
+      "vo": "When a backend Pod crashes, Kubernetes replaces it instantly. But its IP address vanishes into thin air.",
+      "heading": "DYNAMIC IPS",
+      "heading_cue": "backend",
+      "box_label": "CLUSTER",
+      "rows": 3,
+      "row_status": "10.0.1.5",
+      "fail_row": 1,
+      "fail_cue": "crashes",
+      "fail_status": "DEAD",
+      "replace_cue": "replaces",
+      "replace_status": "10.0.1.9",
+      "note": "IP address changed",
+      "note_cue": "vanishes"
+    },
+    {
+      "type": "analogy",
+      "vo": "A Service acts like a company switchboard. Callers dial one permanent number, and the operator routes them to anyone sitting at their desk.",
+      "heading": "THE SWITCHBOARD",
+      "cards": [
+        "SERVICE",
+        "PODS"
+      ],
+      "line": "One number forwarding to available desks",
+      "cue": "switchboard"
+    },
+    {
+      "type": "flow",
+      "vo": "Traffic hits one stable virtual IP. The Service automatically balances requests across all healthy Pods using labels.",
+      "heading": "HOW IT WORKS",
+      "steps": [
+        {
+          "label": "TRAFFIC",
+          "cue": "traffic"
+        },
+        {
+          "label": "SERVICE IP",
+          "cue": "virtual",
+          "side": "STABLE"
+        },
+        {
+          "label": "HEALTHY PODS",
+          "cue": "healthy",
+          "side": "LABELED"
+        }
+      ],
+      "note": "load balanced",
+      "note_cue": "balances"
+    },
+    {
+      "type": "trick",
+      "vo": "Never wire hardcoded IPs. Just run kubectl expose to create a load-balanced Service in one line.",
+      "heading": "THE TRICK",
+      "strike": "hardcode pod ips",
+      "strike_cue": "hardcoded",
+      "terminal": [
+        "kubectl expose deploy web",
+        "--port=80 --target-port=8080"
+      ],
+      "terminal_cue": "expose",
+      "result_count": 1,
+      "result_cue": "create",
+      "status": "service/web created"
+    },
+    {
+      "type": "recap",
+      "vo": "Services provide a stable IP, internal load balancing, and label-based discovery. Follow for more simple Kubernetes!",
+      "heading": "SERVICE",
+      "pills": [
+        {
+          "text": "STABLE VIRTUAL IP",
+          "cue": "stable"
+        },
+        {
+          "text": "LOAD BALANCING",
+          "cue": "balancing"
+        },
+        {
+          "text": "LABEL DISCOVERY",
+          "cue": "discovery"
+        }
+      ],
+      "follow_cue": "follow"
+    }
+  ]
+}

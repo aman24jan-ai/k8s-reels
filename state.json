@@ -1,5 +1,5 @@
 {
-  "day": 16,
+  "day": 17,
   "history": [
     {
       "day": 1,
@@ -89,6 +89,12 @@
       "topic": "Rollback a Deployment",
       "style": "whiteboard",
       "youtube": "https://youtube.com/shorts/kfIcRGfJNOk"
+    },
+    {
+      "day": 17,
+      "topic": "What is a Service?",
+      "style": "whiteboard",
+      "youtube": "https://youtube.com/shorts/Eewr8_gldds"
     }
   ]
 }
