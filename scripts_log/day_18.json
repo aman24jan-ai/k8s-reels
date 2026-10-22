@@ -1,0 +1,115 @@
+{
+  "topic": "ClusterIP Service",
+  "title": "Why you should never connect directly to a Pod IP",
+  "caption": "ClusterIP services explained in plain English. How do you route internal traffic in your cluster?",
+  "hashtags": [
+    "#kubernetes",
+    "#k8s",
+    "#devops",
+    "#cloudnative",
+    "#docker"
+  ],
+  "keywords": [
+    "clusterip",
+    "service",
+    "networking"
+  ],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "Never connect directly to Pod IPs. Pods die constantly, and every new replacement gets a completely different address.",
+      "heading": "CLUSTERIP",
+      "card": "POD 10.1.0.5",
+      "card_cue": "connect",
+      "card_label": "temporary",
+      "point_cue": "constantly",
+      "wrap_label": "SERVICE",
+      "wrap_cue": "replacement",
+      "tagline": "ONE STABLE IP",
+      "tagline_cue": "address"
+    },
+    {
+      "type": "analogy",
+      "vo": "Think of a ClusterIP like an office switchboard. Callers dial one central number, and it forwards you to an available desk.",
+      "heading": "THE ANALOGY",
+      "cards": [
+        "SWITCHBOARD"
+      ],
+      "line": "ONE NUMBER ROUTING TO ANY DESK",
+      "cue": "switchboard"
+    },
+    {
+      "type": "flow",
+      "vo": "Your frontend sends requests to the ClusterIP service. The service automatically balances that traffic across all matching backend Pods.",
+      "heading": "TRAFFIC FLOW",
+      "steps": [
+        {
+          "label": "FRONTEND",
+          "cue": "frontend"
+        },
+        {
+          "label": "CLUSTERIP",
+          "cue": "service",
+          "side": "10.96.0.1"
+        },
+        {
+          "label": "HEALTHY POD",
+          "cue": "balances"
+        }
+      ],
+      "note": "INTERNAL ONLY",
+      "note_cue": "traffic"
+    },
+    {
+      "type": "node_rows",
+      "vo": "If a backend Pod crashes, Kubernetes updates the endpoints instantly. Your callers never notice a single dropped packet.",
+      "heading": "POD CRASHES?",
+      "heading_cue": "crashes",
+      "box_label": "BACKEND PODS",
+      "rows": 3,
+      "row_status": "RUNNING",
+      "fail_row": 1,
+      "fail_cue": "dropped",
+      "fail_status": "CRASHED",
+      "replace_cue": "updates",
+      "replace_status": "NEW POD",
+      "note": "TRAFFIC NEVER STOPS",
+      "note_cue": "instantly"
+    },
+    {
+      "type": "trick",
+      "vo": "To create one quickly, expose your Deployment. Kubernetes assigns an internal ClusterIP by default.",
+      "heading": "QUICK COMMAND",
+      "strike": "HARDCODED POD IPS",
+      "strike_cue": "quickly",
+      "terminal": [
+        "kubectl expose deploy backend",
+        "--port=80 --target-port=8080"
+      ],
+      "terminal_cue": "expose",
+      "result_count": 1,
+      "result_cue": "assigns",
+      "status": "service/backend created"
+    },
+    {
+      "type": "recap",
+      "vo": "So remember: stable virtual IP, internal traffic routing, and zero downtime. Follow for more Kubernetes made simple.",
+      "heading": "CLUSTERIP",
+      "pills": [
+        {
+          "text": "STABLE VIRTUAL IP",
+          "cue": "virtual"
+        },
+        {
+          "text": "INTERNAL ROUTING",
+          "cue": "traffic"
+        },
+        {
+          "text": "ZERO DOWNTIME",
+          "cue": "downtime"
+        }
+      ],
+      "follow_cue": "follow"
+    }
+  ]
+}
