@@ -1,5 +1,5 @@
 {
-  "day": 15,
+  "day": 16,
   "history": [
     {
       "day": 1,
@@ -83,6 +83,12 @@
       "topic": "Rolling Updates",
       "style": "whiteboard",
       "youtube": "https://youtube.com/shorts/s1RlIs4Si34"
+    },
+    {
+      "day": 16,
+      "topic": "Rollback a Deployment",
+      "style": "whiteboard",
+      "youtube": "https://youtube.com/shorts/kfIcRGfJNOk"
     }
   ]
 }

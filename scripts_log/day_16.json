@@ -1,0 +1,93 @@
+{
+  "topic": "Rollback a Deployment",
+  "title": "Your deploy crashed production? Roll back in 3 seconds",
+  "caption": "Broke production? Here is how Kubernetes rolls back instantly. What is your go-to incident recovery trick?",
+  "hashtags": [
+    "#kubernetes",
+    "#k8s",
+    "#devops",
+    "#cloud",
+    "#sre"
+  ],
+  "keywords": [
+    "rollback",
+    "deployment",
+    "kubectl"
+  ],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "You just shipped a broken update straight to production. Users see errors everywhere, but Kubernetes has a built-in time machine.",
+      "heading": "ROLLBACK",
+      "card": "V2 BROKEN",
+      "card_cue": "broken",
+      "card_label": "update",
+      "point_cue": "production",
+      "tagline": "BUILT-IN UNDO",
+      "tagline_cue": "machine"
+    },
+    {
+      "type": "analogy",
+      "vo": "Think of Deployments like browser history with an undo button. Every rollout creates a saved snapshot of your pods.",
+      "heading": "SAVED HISTORY",
+      "cards": [
+        "ROLLOUT"
+      ],
+      "line": "Browser history with an instant undo button",
+      "cue": "browser"
+    },
+    {
+      "type": "flow",
+      "vo": "Revision one was perfectly healthy, but revision two crashed immediately. Your old ReplicaSet is actually still sitting there waiting silently.",
+      "heading": "BEHIND THE SCENES",
+      "steps": [
+        {
+          "label": "REV 1: HEALTHY",
+          "cue": "healthy"
+        },
+        {
+          "label": "REV 2: CRASHING",
+          "cue": "crashed",
+          "red": true
+        }
+      ],
+      "note": "v1 replica set waits at 0",
+      "note_cue": "silently"
+    },
+    {
+      "type": "trick",
+      "vo": "Don't panic and rebuild docker images. One quick command undoes the deployment and restores healthy pods in seconds.",
+      "heading": "INSTANT UNDO",
+      "strike": "rebuild old image",
+      "strike_cue": "rebuild",
+      "terminal": [
+        "kubectl rollout undo deploy/web",
+        "deployment.apps/web rolled back"
+      ],
+      "terminal_cue": "command",
+      "result_count": 3,
+      "result_cue": "seconds",
+      "status": "3 / 3 HEALTHY"
+    },
+    {
+      "type": "recap",
+      "vo": "To check history, view rollout status. Inspect revisions, rollback safely, and restore uptime instantly. Follow for more practical Kubernetes in plain English!",
+      "heading": "ROLLBACK",
+      "pills": [
+        {
+          "text": "REVISION HISTORY",
+          "cue": "revisions"
+        },
+        {
+          "text": "INSTANT UNDO",
+          "cue": "rollback"
+        },
+        {
+          "text": "ZERO DOWNTIME",
+          "cue": "uptime"
+        }
+      ],
+      "follow_cue": "follow"
+    }
+  ]
+}
