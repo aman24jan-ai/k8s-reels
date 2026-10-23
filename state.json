@@ -1,5 +1,5 @@
 {
-  "day": 18,
+  "day": 19,
   "history": [
     {
       "day": 1,
@@ -101,6 +101,12 @@
       "topic": "ClusterIP Service",
       "style": "whiteboard",
       "youtube": "https://youtube.com/shorts/pvgqLzYNNS4"
+    },
+    {
+      "day": 19,
+      "topic": "NodePort Service",
+      "style": "whiteboard",
+      "youtube": "https://youtube.com/shorts/MWSrdICzK4A"
     }
   ]
 }

@@ -1,0 +1,109 @@
+{
+  "topic": "NodePort Service",
+  "title": "The easiest way to expose your Pod without a load balancer",
+  "caption": "How NodePort opens access to your Kubernetes cluster. What port range does your team use?",
+  "hashtags": [
+    "#kubernetes",
+    "#k8s",
+    "#devops",
+    "#cloud",
+    "#networking"
+  ],
+  "keywords": [
+    "nodeport",
+    "service",
+    "networking"
+  ],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "How do you reach a Pod from outside your cluster without a pricey cloud load balancer? Meet NodePort.",
+      "heading": "NODEPORT",
+      "card": "POD",
+      "card_cue": "pod",
+      "card_label": "PRIVATE IP",
+      "point_cue": "reach",
+      "wrap_label": "NODEPORT",
+      "wrap_cue": "nodeport",
+      "tagline": "EXTERNAL ACCESS",
+      "tagline_cue": "outside"
+    },
+    {
+      "type": "flow",
+      "vo": "NodePort opens one dedicated port on every single worker node, automatically forwarding incoming traffic straight to your Pod.",
+      "heading": "TRAFFIC FLOW",
+      "steps": [
+        {
+          "label": "OUTSIDE USER",
+          "cue": "traffic"
+        },
+        {
+          "label": "PORT 30080",
+          "cue": "port",
+          "side": "ANY NODE"
+        },
+        {
+          "label": "TARGET POD",
+          "cue": "pod"
+        }
+      ],
+      "note": "RANGE 30000-32767",
+      "note_cue": "dedicated"
+    },
+    {
+      "type": "analogy",
+      "vo": "Think of it like an apartment intercom code that rings your specific flat from any entrance door.",
+      "heading": "INTERCOM CODE",
+      "cards": [
+        "DOOR",
+        "FLAT"
+      ],
+      "line": "Rings your flat from any entrance door",
+      "cue": "intercom"
+    },
+    {
+      "type": "node_rows",
+      "vo": "Because that port opens everywhere, hitting any node IP routes traffic forward, even if that node hosts no Pod.",
+      "heading": "OPEN EVERYWHERE",
+      "heading_cue": "everywhere",
+      "box_label": "CLUSTER NODES",
+      "rows": 3,
+      "row_status": "OPEN",
+      "note": "forwarded to matching pod",
+      "note_cue": "routes"
+    },
+    {
+      "type": "trick",
+      "vo": "You can expose your deployment with one command, picking a port between thirty thousand and thirty-two thousand.",
+      "heading": "KUBECTL TRICK",
+      "terminal": [
+        "kubectl expose deploy web \\",
+        "  --type=NodePort --port=80"
+      ],
+      "terminal_cue": "expose",
+      "result_count": 1,
+      "result_cue": "command",
+      "status": "30080:80/TCP"
+    },
+    {
+      "type": "recap",
+      "vo": "So: fixed port range, opens across every node, direct external access. Follow for Kubernetes made simple.",
+      "heading": "NODEPORT",
+      "pills": [
+        {
+          "text": "PORT RANGE 30000-32767",
+          "cue": "range"
+        },
+        {
+          "text": "OPENS ON EVERY NODE",
+          "cue": "opens"
+        },
+        {
+          "text": "DIRECT ACCESS",
+          "cue": "access"
+        }
+      ],
+      "follow_cue": "follow"
+    }
+  ]
+}
