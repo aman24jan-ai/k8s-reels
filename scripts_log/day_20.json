@@ -1,0 +1,120 @@
+{
+  "topic": "LoadBalancer Service",
+  "title": "Exposing Kubernetes to the internet? Do this first",
+  "caption": "How do you route external traffic to your Kubernetes cluster?",
+  "hashtags": [
+    "#kubernetes",
+    "#k8s",
+    "#devops",
+    "#cloud",
+    "#infrastructure"
+  ],
+  "keywords": [
+    "loadbalancer",
+    "service",
+    "networking"
+  ],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "How do users on the internet actually reach your Kubernetes Pods? You expose them using a LoadBalancer Service!",
+      "heading": "LOADBALANCER",
+      "card": "PODS",
+      "card_cue": "Pods",
+      "card_label": "INTERNAL PODS",
+      "point_cue": "reach",
+      "wrap_label": "SERVICE",
+      "wrap_cue": "Service",
+      "card2": "USERS",
+      "card2_cue": "users",
+      "group_label": "EXTERNAL TRAFFIC",
+      "tagline": "PUBLIC ACCESS POINT",
+      "tagline_cue": "expose"
+    },
+    {
+      "type": "analogy",
+      "vo": "Think of it like a receptionist at a busy office directing visitors to open desks.",
+      "heading": "THE ANALOGY",
+      "cards": [
+        "RECEPTION",
+        "VISITOR"
+      ],
+      "line": "A receptionist guiding visitors to open desks",
+      "cue": "receptionist"
+    },
+    {
+      "type": "flow",
+      "vo": "Traffic hits a public cloud IP address, routes to the Service, and gets distributed across healthy Pods.",
+      "heading": "TRAFFIC FLOW",
+      "steps": [
+        {
+          "label": "PUBLIC IP",
+          "cue": "public",
+          "side": "AWS / GCP"
+        },
+        {
+          "label": "LOADBALANCER",
+          "cue": "Service"
+        },
+        {
+          "label": "PODS",
+          "cue": "distributed"
+        }
+      ],
+      "note": "Balances incoming traffic",
+      "note_cue": "Traffic"
+    },
+    {
+      "type": "node_rows",
+      "vo": "If one Pod fails, the LoadBalancer instantly detects it and routes traffic only to healthy Pods.",
+      "heading": "POD FAILURE",
+      "heading_cue": "fails",
+      "box_label": "TARGET PODS",
+      "rows": 3,
+      "row_status": "HEALTHY",
+      "fail_row": 1,
+      "fail_cue": "fails",
+      "fail_status": "FAILED",
+      "replace_cue": "healthy",
+      "replace_status": "HEALTHY",
+      "note": "Reroutes traffic automatically",
+      "note_cue": "routes"
+    },
+    {
+      "type": "trick",
+      "vo": "Skip manual cloud setup. Just set type to LoadBalancer inside your Service spec!",
+      "heading": "THE TRICK",
+      "strike": "manual cloud setup",
+      "strike_cue": "manual",
+      "terminal": [
+        "kind: Service",
+        "spec:",
+        "  type: LoadBalancer"
+      ],
+      "terminal_cue": "type",
+      "result_count": 1,
+      "result_cue": "Service",
+      "status": "EXTERNAL-IP"
+    },
+    {
+      "type": "recap",
+      "vo": "So, LoadBalancer Services: provide public IPs, balance traffic, and handle failures automatically. Follow for more Kubernetes tips!",
+      "heading": "LOADBALANCER",
+      "pills": [
+        {
+          "text": "PUBLIC IP ACCESS",
+          "cue": "public"
+        },
+        {
+          "text": "BALANCES TRAFFIC",
+          "cue": "traffic"
+        },
+        {
+          "text": "AUTOMATIC FAILOVER",
+          "cue": "failures"
+        }
+      ],
+      "follow_cue": "Follow"
+    }
+  ]
+}
