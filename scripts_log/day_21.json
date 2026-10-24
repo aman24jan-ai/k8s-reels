@@ -1,0 +1,101 @@
+{
+  "topic": "What is Ingress?",
+  "title": "Stop paying for ten load balancers in Kubernetes",
+  "caption": "Ingress explained in 40 seconds. Are you still paying for multiple cloud load balancers?",
+  "hashtags": [
+    "#kubernetes",
+    "#k8s",
+    "#devops",
+    "#cloud",
+    "#networking"
+  ],
+  "keywords": [
+    "ingress",
+    "load balancer",
+    "routing"
+  ],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "Want to expose ten different microservices to the internet? If you spin up ten separate cloud load balancers, your monthly bill will explode.",
+      "heading": "INGRESS",
+      "card": "LOAD BALANCER",
+      "card_cue": "balancers",
+      "card_label": "service",
+      "point_cue": "internet",
+      "card2": "ANOTHER LB",
+      "card2_cue": "separate",
+      "group_label": "10X COST",
+      "tagline": "STOP PAYING FOR TEN LOAD BALANCERS",
+      "tagline_cue": "bill"
+    },
+    {
+      "type": "analogy",
+      "vo": "That is why Kubernetes has Ingress. Think of it as a smart receptionist sitting right at your cluster's front door.",
+      "heading": "THE RECEPTIONIST",
+      "cards": [
+        "RECEPTIONIST"
+      ],
+      "line": "ONE FRONT DOOR ROUTING EVERY VISITOR",
+      "cue": "receptionist"
+    },
+    {
+      "type": "flow",
+      "vo": "One single public IP receives all incoming web traffic, inspects the URL, and routes it to the target service.",
+      "heading": "HOW IT WORKS",
+      "steps": [
+        {
+          "label": "PUBLIC IP",
+          "cue": "public"
+        },
+        {
+          "label": "INGRESS",
+          "cue": "traffic"
+        },
+        {
+          "label": "TARGET SERVICE",
+          "cue": "service",
+          "side": "PORT 80"
+        }
+      ],
+      "note": "ROUTES BY DOMAIN OR PATH",
+      "note_cue": "inspects"
+    },
+    {
+      "type": "trick",
+      "vo": "Instead of buying multiple expensive balancers, you define HTTP path rules right inside a single Ingress manifest.",
+      "heading": "THE INGRESS RULE",
+      "strike": "10 LOAD BALANCERS",
+      "strike_cue": "multiple",
+      "terminal": [
+        "kind: Ingress",
+        "path: /api",
+        "pathType: Prefix"
+      ],
+      "terminal_cue": "manifest",
+      "result_count": 2,
+      "result_cue": "rules",
+      "status": "1 IP ROUTING TO MANY"
+    },
+    {
+      "type": "recap",
+      "vo": "Ingress gives you one entrypoint, intelligent HTTP routing, and saves massive cloud money. Follow for more Kubernetes made simple.",
+      "heading": "INGRESS",
+      "pills": [
+        {
+          "text": "ONE ENTRYPOINT",
+          "cue": "entrypoint"
+        },
+        {
+          "text": "SMART HTTP ROUTING",
+          "cue": "routing"
+        },
+        {
+          "text": "SAVES CLOUD MONEY",
+          "cue": "money"
+        }
+      ],
+      "follow_cue": "follow"
+    }
+  ]
+}
