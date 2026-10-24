@@ -1,0 +1,98 @@
+{
+  "topic": "What are Labels and Selectors?",
+  "title": "Kubernetes doesn't care about Pod names. Here's why",
+  "caption": "Labels and selectors make Kubernetes tick. How do you organize your labels?",
+  "hashtags": [
+    "#kubernetes",
+    "#k8s",
+    "#devops",
+    "#cloud",
+    "#docker"
+  ],
+  "keywords": [
+    "labels",
+    "selectors",
+    "kubectl"
+  ],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "How does Kubernetes track thousands of Pods without losing its mind? Not by name or IP, but by simple key-value tags.",
+      "heading": "LABELS & SELECTORS",
+      "card": "POD",
+      "card_cue": "pods",
+      "card_label": "POD",
+      "point_cue": "track",
+      "wrap_label": "APP: WEB",
+      "wrap_cue": "tags",
+      "tagline": "HOW K8S FINDS THINGS",
+      "tagline_cue": "losing"
+    },
+    {
+      "type": "analogy",
+      "vo": "Think of labels like colorful luggage tags stuck on every container. Selectors are the filter that grabs exactly what you need.",
+      "heading": "THE ANALOGY",
+      "cards": [
+        "LUGGAGE TAG",
+        "FILTER"
+      ],
+      "line": "STICKY TAGS + SMART FILTER",
+      "cue": "luggage"
+    },
+    {
+      "type": "flow",
+      "vo": "You slap a label on your Pods, like env equals prod. Then a Service or Deployment uses a selector to find and route traffic to them.",
+      "heading": "HOW THEY CONNECT",
+      "steps": [
+        {
+          "label": "LABEL: ENV=PROD",
+          "cue": "slap",
+          "side": "POD"
+        },
+        {
+          "label": "SELECTOR: ENV=PROD",
+          "cue": "selector",
+          "side": "SERVICE"
+        },
+        {
+          "label": "MATCH & CONNECT",
+          "cue": "traffic"
+        }
+      ]
+    },
+    {
+      "type": "trick",
+      "vo": "Stop searching random names manually. Just filter by label straight from your terminal.",
+      "heading": "THE TRICK",
+      "strike": "search pod names",
+      "strike_cue": "names",
+      "terminal": [
+        "kubectl get pods -l env=prod"
+      ],
+      "terminal_cue": "filter",
+      "result_count": 3,
+      "result_cue": "terminal",
+      "status": "3 MATCHED"
+    },
+    {
+      "type": "recap",
+      "vo": "Labels tag objects, selectors group them, and Kubernetes routes effortlessly. Follow for more Kubernetes in plain English.",
+      "heading": "LABELS & SELECTORS",
+      "pills": [
+        {
+          "text": "KEY-VALUE TAGS",
+          "cue": "tag"
+        },
+        {
+          "text": "SMART SELECTORS",
+          "cue": "selectors"
+        },
+        {
+          "text": "DYNAMIC ROUTING",
+          "cue": "routes"
+        }
+      ],
+      "follow_cue": "follow"
+    }
+  ]
+}

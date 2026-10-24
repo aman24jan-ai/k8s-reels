@@ -1,5 +1,5 @@
 {
-  "day": 22,
+  "day": 23,
   "history": [
     {
       "day": 1,
@@ -125,6 +125,12 @@
       "topic": "What is a Namespace?",
       "style": "whiteboard",
       "youtube": "https://youtube.com/shorts/JaGE6Hn_scY"
+    },
+    {
+      "day": 23,
+      "topic": "What are Labels and Selectors?",
+      "style": "whiteboard",
+      "youtube": "https://youtube.com/shorts/2mgEnnAOBZ4"
     }
   ]
 }
