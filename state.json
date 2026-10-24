@@ -1,5 +1,5 @@
 {
-  "day": 21,
+  "day": 22,
   "history": [
     {
       "day": 1,
@@ -119,6 +119,12 @@
       "topic": "What is Ingress?",
       "style": "whiteboard",
       "youtube": "https://youtube.com/shorts/ABsconekXRQ"
+    },
+    {
+      "day": 22,
+      "topic": "What is a Namespace?",
+      "style": "whiteboard",
+      "youtube": "https://youtube.com/shorts/JaGE6Hn_scY"
     }
   ]
 }

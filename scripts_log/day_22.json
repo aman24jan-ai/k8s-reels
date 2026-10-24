@@ -1,0 +1,99 @@
+{
+  "topic": "What is a Namespace?",
+  "title": "Two teams, one Kubernetes cluster: how they don't collide",
+  "caption": "Kubernetes Namespaces explained simply. How many namespaces does your team run?",
+  "hashtags": [
+    "#kubernetes",
+    "#k8s",
+    "#devops",
+    "#cloud",
+    "#sysadmin"
+  ],
+  "keywords": [
+    "namespace",
+    "cluster",
+    "kubectl"
+  ],
+  "scenes": [
+    {
+      "type": "hook_title",
+      "vo": "What happens when two engineers deploy an app with the exact same name? In Kubernetes, they collide into each other instantly.",
+      "heading": "NAMESPACES",
+      "card": "API-SERVICE",
+      "card_cue": "deploy",
+      "card_label": "TEAM ALPHA",
+      "point_cue": "engineers",
+      "wrap_label": "ONE CLUSTER",
+      "wrap_cue": "kubernetes",
+      "card2": "API-SERVICE",
+      "card2_cue": "collide",
+      "group_label": "NAME COLLISION",
+      "tagline": "NAME COLLISION!",
+      "tagline_cue": "same"
+    },
+    {
+      "type": "analogy",
+      "vo": "Namespaces solve this cleanly. Think of your cluster as an apartment building, where every tenant gets their own private front door.",
+      "heading": "APARTMENT WALLS",
+      "cards": [
+        "DEV ROOM",
+        "PROD ROOM"
+      ],
+      "line": "APARTMENTS IN ONE BUILDING",
+      "cue": "apartment"
+    },
+    {
+      "type": "inside_box",
+      "vo": "Inside each namespace, names only need to be unique locally. Dev and Prod can both run an api on the same cluster.",
+      "heading": "INSIDE NAMESPACES",
+      "cards": [
+        "API (DEV)",
+        "API (PROD)"
+      ],
+      "badge": "ISOLATED",
+      "badge_cue": "unique",
+      "link_label": "NO CLASH",
+      "link_cue": "both",
+      "shared": "ONE PHYSICAL CLUSTER",
+      "shared_cue": "cluster",
+      "note": "IDENTICAL NAMES ALLOWED",
+      "note_cue": "locally"
+    },
+    {
+      "type": "trick",
+      "vo": "To isolate your workloads, target a specific room using the dash n flag, or set the namespace in your yaml manifests.",
+      "heading": "THE TRICK",
+      "strike": "everything in default",
+      "strike_cue": "isolate",
+      "terminal": [
+        "kubectl get pods -n dev",
+        "metadata:",
+        "  namespace: dev"
+      ],
+      "terminal_cue": "flag",
+      "result_count": 2,
+      "result_cue": "manifests",
+      "status": "SCOPED TO DEV"
+    },
+    {
+      "type": "recap",
+      "vo": "So, Namespaces: virtual clusters, zero naming collisions, and clean team isolation. Follow for more Kubernetes made simple.",
+      "heading": "NAMESPACES",
+      "pills": [
+        {
+          "text": "VIRTUAL CLUSTERS",
+          "cue": "virtual"
+        },
+        {
+          "text": "NO NAME COLLISIONS",
+          "cue": "collisions"
+        },
+        {
+          "text": "TEAM ISOLATION",
+          "cue": "isolation"
+        }
+      ],
+      "follow_cue": "follow"
+    }
+  ]
+}
